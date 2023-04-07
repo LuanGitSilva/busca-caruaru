@@ -2,15 +2,16 @@ import { useState } from "react";
 import { Place } from "../../../types/Place";
 import styles from '../../styles/Category.module.css';
 import KeyboardIcon from '@mui/icons-material/Keyboard';
+import { BackButton } from "../../../components/BackButton";
 
 type Props = {
     places: Place[];
 }
 
-const Alter = () => {
+const Edit = () => {
     const [show, setShow] = useState(false);
 
-    const [id, setId] = useState();
+    const [id, setId] = useState<number>();
     const [name, setName] = useState('');
     const [image, setImage] = useState('');
     const [text, setText] = useState('');
@@ -18,10 +19,10 @@ const Alter = () => {
     const [address, setAddress] = useState('');
 
     const sendInfo = async () => {
-        if(name && image && text && contact && address) {
+        if(id && name || image || text || contact || address) {
 
-            let response = await fetch("/api/places/${}", {
-                method: 'POST',
+            let response = await fetch(`/api/places/${id}`, {
+                method: 'PUT',
                 body: JSON.stringify({
                     id: id,
                     name: name,
@@ -37,16 +38,33 @@ const Alter = () => {
             let json = await response.json();
 
             if(json.status) {
-                alert('Local cadastrado com sucesso!')
+                alert('Local alterado com sucesso!')
             }
 
         } else {
-            alert("Preencha todos os dados!")
+            alert("Preencha algum dado!")
         }
     }
 
     return (
         <>
+            <h1 className={styles.title}>Insira os dados para alteração</h1>
+
+            <h2 className={styles.subtitle}>Digite o ID do local a ser alterado:</h2>
+            <div className={styles.search}>
+                <input 
+                    type="number"
+                    value={id}
+                    onChange={(e)=>setId(parseInt(e.target.value))}
+                    placeholder="Digite o ID do local" />
+                <KeyboardIcon
+                    style={{
+                        display: id ? 'none' : 'block'
+                    }}
+                    className={styles.icon}
+                />
+            </div>
+        
             <h2 className={styles.subtitle}>Nome do local:</h2>
             <div className={styles.search}>
                 <input 
@@ -68,7 +86,7 @@ const Alter = () => {
                     type="text"
                     value={image}
                     onChange={(e)=>setImage(e.target.value)}
-                    placeholder="Digite a url da imagem do local" />
+                    placeholder="Digite a url da imagem" />
                 <KeyboardIcon
                     style={{
                         display: image ? 'none' : 'block'
@@ -83,7 +101,7 @@ const Alter = () => {
                     type="text"
                     value={text}
                     onChange={(e)=>setText(e.target.value)}
-                    placeholder="Digite uma descrição sobre o local" />
+                    placeholder="Digite uma descrição do local" />
                 <KeyboardIcon
                     style={{
                         display: text ? 'none' : 'block'
@@ -122,11 +140,25 @@ const Alter = () => {
                 />
             </div>
 
-            <div className={styles.btn}>
+            <div 
+                style={{
+                    display: id && name || image || text || contact || address ? 'flex' : 'none'
+                }}
+                className={styles.btn}
+            >
                 <button onClick={sendInfo}>Enviar</button>
+            </div>
+
+            <div 
+                style={{
+                    display: id && name || image || text || contact || address ? 'none' : 'flex'
+                }}
+                className={styles.btn}
+            >
+                <BackButton />
             </div>
         </>
     );
 }
 
-export default Alter;
+export default Edit;

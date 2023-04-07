@@ -1,5 +1,4 @@
 export type Place = {
-    map(arg0: (post: Place) => any): import("react").ReactNode;
     id: number;
     name: string;
     text: string;

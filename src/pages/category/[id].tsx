@@ -1,9 +1,9 @@
-import { GetStaticPaths ,GetStaticProps } from "next";
 import { Place } from "../../../types/Place";
 import { ParsedUrlQuery } from "querystring";
 import styles from "../../styles/CategoryId.module.css";
 import { PrismaClient } from "@prisma/client";
 import api from "../../../libs/api";
+import { BackButton } from "../../../components/BackButton";
 
 type Props = {
     place: Place
@@ -28,6 +28,8 @@ const CategoryType = ({ place }: Props) => {
 
             <h3>Nosso contato:</h3>
             <p>{place.contact}</p>
+
+            <BackButton />
         </div>
     );
 }
@@ -35,15 +37,9 @@ const CategoryType = ({ place }: Props) => {
 export default CategoryType;
 
 export const getStaticPaths = async () => {
-    // const res = await fetch('https://my-json-server.typicode.com/LuanGitSilva/api/data');
-    // const places: Place[] = await res.json();
-    // const paths = places.map(place => ({ 
-    //     params: { id: place.id.toString() } 
-    // }));
-    // return { paths, fallback: false }
 
     const prisma = new PrismaClient();
-    const places: Place[] = await prisma.place.findMany();
+    const places = await prisma.place.findMany();
     return {
       paths: places.map((place) => ({
         params: {
@@ -59,15 +55,6 @@ interface IParams extends ParsedUrlQuery {
 }
 export const getStaticProps = async (context: { params: IParams }, params: { id: string }) => {
     const { id } = context.params as IParams;
-
-    // const req = await fetch(`https://my-json-server.typicode.com/LuanGitSilva/api/data/${id}`);
-    // const place = await req.json();
-
-    // return {
-    //     props: {
-    //         place
-    //     }
-    // }
 
     const prisma = new PrismaClient()
     const place = await api.getPlace(parseInt(id as string));

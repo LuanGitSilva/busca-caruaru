@@ -1,0 +1,23 @@
+.btn {
+    width: 100%;  
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.btn button {
+    width: 10rem;
+    height: 4rem;
+    border: none;
+    border-radius: 3rem;
+    background-color: var(--headerBackgroundColor);
+    color: var(--color2);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.7rem;
+}
+
+.btn button:hover {
+    background-color: #daa700;
+    text-decoration: underline;
+}
