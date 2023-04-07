@@ -1,0 +1,36 @@
+.category {
+    padding-top: 3rem;
+    max-width: 100rem;
+    margin-inline: auto;
+}
+
+.p {
+    width: 12rem;
+    height: 3rem;
+    padding: 0 1rem 0rem 0;
+    font-size: 2.2rem;
+    font-weight: bold;
+    background-color: #fff;
+    position: absolute;
+    color: var(--borderColor);
+}
+
+.container {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    border: 1px solid var(--borderColor);
+    margin: 1rem auto;
+    padding: 3rem;
+    border-radius: 2rem;
+}
+
+.container li {
+    font-size: 2rem;
+    list-style: none;
+}
+
+.container li:hover {
+    text-decoration: underline;
+}
