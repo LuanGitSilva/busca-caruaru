@@ -1,0 +1,77 @@
+.container {
+    width: 100%;
+    max-width: 60rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    margin-top: 3rem;
+}
+
+.question1,
+.question2 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid #00000020;
+    border-radius: .5rem;
+}
+
+.z-index {
+    z-index: 1;
+}
+
+.question1 h2,
+.question2 h2 {
+    transition: .5s;
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+}
+
+.question1::after {
+    content: "Nesta página inicial você verá algumas das notícias mais recentes da região para lhe deixar sempre informado dos acontecimentos mais relevantes.";
+    font-size: 1.8rem;
+    z-index: -1;
+    position: relative;
+    text-align: justify;
+    text-indent: 4rem;
+}
+
+.question2::after {
+    content: "Em nosso menu você terá acesso à página de locais, nela você poderar filtrar o local que você procura pelo nome, ao clicar no nome você terá acesso as informações sobre o local podendo ser serviços oferecidos, produtos vendidos, telefone para contato, endereço e até a localização via GoogleMaps.";
+    font-size: 1.8rem;
+    z-index: -1;
+    position: relative;
+    text-align: justify;
+    text-indent: 4rem;
+}
+
+.btn {
+    width: 100%;  
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.btn button {
+    width: 12rem;
+    height: 4rem;
+    border: none;
+    border-radius: 3rem;
+    background-color: var(--headerBackgroundColor);
+    color: var(--color2);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.7rem;
+    transition: .3s;
+}
+
+.btn button:hover {
+    background-color: var(--color1);
+    text-decoration: underline;
+}

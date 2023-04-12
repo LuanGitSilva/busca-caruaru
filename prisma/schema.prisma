@@ -17,6 +17,7 @@ model Place {
   contact String?
   address String
   image   String  
+  maps    String
 
   @@map("places")
 }

@@ -108,12 +108,12 @@ a {
 /* ------------------- */
 
 :root {
-  --headerBackgroundColor: #ffc500;
+  --headerBackgroundColor: #003785;
   --footerBackgroundColor: #000;
-  --color1: #414141;
-  --color2: #fcfcfc;
-  --borderColor: #afafaf;
-  --bgAll: #f0f0f0;
+  --color2: #f1f1f1;
+  --color1: #1465bb;
+  --borderColor: #d1d1d1;
+  --bgAll: #efeeee;
 }
 
 ::-webkit-scrollbar {

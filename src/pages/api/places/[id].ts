@@ -14,7 +14,7 @@ const handlerGet: NextApiHandler = async (req, res) => {
 }
 
 const handlerPut: NextApiHandler = async (req, res) => {
-    const { name, text, contact, address, image } = req.body;
+    const { name, text, contact, address, image, maps } = req.body;
     const { id } = req.query;
 
     const updatedPlace = await api.updatePlace(
@@ -23,7 +23,8 @@ const handlerPut: NextApiHandler = async (req, res) => {
         text,
         contact,
         address, 
-        image
+        image,
+        maps
     );
 
     if(updatedPlace) {

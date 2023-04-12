@@ -12,9 +12,10 @@ const Fillout = () => {
     const [text, setText] = useState('');
     const [contact, setContact] = useState('');
     const [address, setAddress] = useState('');
+    const [maps, setMaps] = useState('');
 
     const sendInfo = async () => {
-        if(name && image && text && contact && address) {
+        if(name && image && text && contact && address && maps) {
             let response = await fetch("/api/places", {
                 method: 'POST',
                 body: JSON.stringify({
@@ -23,7 +24,8 @@ const Fillout = () => {
                     image: image,
                     text: text,
                     contact: contact,
-                    address: address
+                    address: address,
+                    maps: maps
                 }),
                 headers: {
                     'Content-Type': 'application/json'
@@ -31,7 +33,14 @@ const Fillout = () => {
             });
             let json = await response.json();
             if(json.status) {
-                alert('Local cadastrado com sucesso!')
+                alert('Local cadastrado com sucesso!');
+                setName('');
+                setImage('');
+                setText('');
+                setContact('');
+                setAddress('');
+                setMaps('');
+
             }
         } else {
             alert("Preencha todos os dados!")
@@ -114,9 +123,25 @@ const Fillout = () => {
                         className={styles.icon}
                     />
                 </div>
+
+                <h2 className={styles.subtitle}>link do GoogleMaps:</h2>
+                <div className={styles.search}>
+                    <input
+                        type="text"
+                        value={maps}
+                        onChange={(e)=>setMaps(e.target.value)}
+                        placeholder="Digite o link do GoogleMaps" />
+                    <KeyboardIcon
+                        style={{
+                            display: maps ? 'none' : 'block'
+                        }}
+                        className={styles.icon}
+                    />
+                </div>
+
                 <div
                     style={{
-                        display: name && image && text && contact && address ? 'flex' : 'none'
+                        display: name && image && text && contact && address && maps ? 'flex' : 'none'
                     }}
                     className={styles.btn}
                 >
@@ -125,7 +150,7 @@ const Fillout = () => {
 
                 <div
                     style={{
-                        display: name && image && text && contact && address ? 'none' : 'flex'
+                        display: name && image && text && contact && address && maps ? 'none' : 'flex'
                     }}
                 >
                     <BackButton />

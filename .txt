@@ -1,0 +1,8 @@
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, maxime placeat laboriosam magnam eligendi saepe rerum commodi quibusdam nobis expedita, eaque cupiditate dolorum, ullam incidunt. Magnam deserunt suscipit ex consectetur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, maxime placeat laboriosam magnam eligendi saepe rerum commodi quibusdam nobis expedita, eaque cupiditate dolorum, ullam incidunt. Magnam deserunt suscipit ex consectetur.
+
+
+https://raw.githubusercontent.com/LuanGitSilva/api/main/image/clinica1.jpg
+
+
+
+https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3948.400875233097!2d-35.94870499999999!3d-8.262835999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7a98987f61df5ff%3A0x15c3f0ea668e51e8!2sR.%20Molise%2C%20112%20-%20S%C3%A3o%20Jo%C3%A3o%20da%20Esc%C3%B3cia%2C%20Caruaru%20-%20PE%2C%2055019-217!5e0!3m2!1spt-BR!2sbr!4v1680926729210!5m2!1spt-BR!2sbr

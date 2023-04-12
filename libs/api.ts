@@ -14,7 +14,8 @@ export default {
                 text: true,
                 contact: true,
                 address: true,
-                image: true
+                image: true,
+                maps: true
             },
             orderBy: {
                 id: 'asc'
@@ -23,7 +24,7 @@ export default {
 
         return users;
     },
-    addPlace: async (id: number, name: string, text: string, contact: string, address: string, image: string) => {
+    addPlace: async (id: number, name: string, text: string, contact: string, address: string, image: string, maps: string) => {
         return await prisma.place.create({
             data: {
                 id,
@@ -31,7 +32,8 @@ export default {
                 text,
                 contact,
                 address,
-                image
+                image,
+                maps
             }
         });
     },
@@ -41,13 +43,14 @@ export default {
         });
         return place;
     },
-    updatePlace: async (id?: number, name?: string, text?: string, contact?: string, address?: string, image?: string) => {
+    updatePlace: async (id?: number, name?: string, text?: string, contact?: string, address?: string, image?: string, maps?: string) => {
         let data: {
             name?: string;
             text?: string;
             contact?: string;
             address?: string;
             image?: string;
+            maps?: string;
         } = {};
     
         if (name) { data.name = name }
@@ -55,6 +58,7 @@ export default {
         if (contact) { data.contact = contact }
         if (address) { data.address = address }
         if (image) { data.image = image }
+        if (maps) { data.maps = maps }
     
         const updatedPlace = await prisma.place.update({
             where: {

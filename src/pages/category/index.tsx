@@ -5,7 +5,7 @@ import Link from "next/link";
 import api from "../../../libs/api";
 import SearchIcon from '@mui/icons-material/Search';
 import KeyboardIcon from '@mui/icons-material/Keyboard';
-import { BackButton } from "../../../components/BackButton";
+import { BackButton } from "../../../components/BackButton"; 
 
 type Props = {
     places: Place[];

@@ -25,16 +25,18 @@
     max-width: 25rem;
     height: 5rem;
     background-color: var(--headerBackgroundColor);
+    color: var(--color2);
     font-size: 2.2rem;
     font-weight: bold;
     border-radius: 1rem;
     border: none;
     cursor: pointer;
     margin-inline: auto;
+    transition: .3s;
 }
 
 .text1 button:hover {
-    background-color: rgb(255, 226, 132);
+    background-color: var(--color1);
 }
 
 .text2 {
@@ -59,14 +61,14 @@
     justify-content: center;
     align-items: end;
     border-radius: 1rem;
-    background-color: #d40000;
+    background-color: var(--color1);
     color: white;
     font-size: 6rem;
 }
 
 .text1 h3,
 .text2 h3 {
-    color: #d40000;
+    color: var(--headerBackgroundColor);
 }
 
 .image {

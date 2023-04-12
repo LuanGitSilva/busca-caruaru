@@ -64,10 +64,11 @@
     cursor: pointer;
     font-weight: bold;
     font-size: 1.7rem;
+    transition: .3s;
 }
 
 .btn button:hover {
-    background-color: #daa700;
+    background-color: var(--color1);
     text-decoration: underline;
 }
 

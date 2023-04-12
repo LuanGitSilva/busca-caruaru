@@ -9,9 +9,9 @@ const handlerGet: NextApiHandler = async(req, res) => {
 
 // Inserting new user
 const handlerPost: NextApiHandler = async (req, res) => {
-    const { id, name, text, contact, address, image } = req.body;
+    const { id, name, text, contact, address, image, maps } = req.body;
 
-    const newPlace = await api.addPlace(id, name, text, contact, address, image).catch(() => {
+    const newPlace = await api.addPlace(id, name, text, contact, address, image, maps).catch(() => {
         res.json({ error: 'Usuário já existe!' })
     });
 

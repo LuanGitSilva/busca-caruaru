@@ -4,6 +4,9 @@ import styles from '@component/styles/Home.module.css';
 import { Slide } from '../../components/Slide';
 import { News } from '../../types/News';
 import { SlideMini } from '../../components/Slide copy';
+import Introduction from '../../components/Introduction';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 type Props = {
   items: News[];
@@ -27,7 +30,7 @@ export default function Home({ items }: Props) {
   }, []);
 
   useEffect(() => {
-    if(scrollPosition >= 1100) {
+    if(scrollPosition >= 1730) {
       setTop(true);
     } else {
       setTop(false);
@@ -47,6 +50,10 @@ export default function Home({ items }: Props) {
     }
   }, [w]);
 
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
+  }, []);
+
   return (
     <>
       <Head>
@@ -57,9 +64,10 @@ export default function Home({ items }: Props) {
       </Head>
       <main className={styles.main}>
         <Slide />
+        <Introduction />
         <div className={styles.allNews}>
-          <h2>Notícias</h2>
-          <div className={styles.adds}>
+          <h2 data-aos='fade-up'>Notícias</h2>
+          <div data-aos='fade-up' className={styles.adds}>
             <div className={styles.ad1}>
               <h3>Novas regras de trânsito</h3>
               <p>Prefeitura inicia projeto para mudanças de direção em algumas ruas da cidade, segundo o secretário de turismo essa mudança irá diminuir o congestionamento nas vias de acesso aos polos festivos da cidade e aos locais que hoje apresentão maior tráfego nos bairros mais populosos.</p>
@@ -70,20 +78,20 @@ export default function Home({ items }: Props) {
             </div>
           </div>
           <div className={styles.body}>
-            <div className={styles.body1}>
+            <div data-aos='fade-up' className={styles.body1}>
               {items.map((item, index)=>(
                 <div
                   style={{
                     backgroundImage: `url(${item.image})`
                   }}
                   className={styles.news} key={index}>
-                    <h3>{item.title}</h3>
-                    <p>{item.text}</p>
+                    <h3 data-aos='fade-up'>{item.title}</h3>
+                    <p data-aos='fade-up'>{item.text}</p>
                 </div>
               ))}
             </div>
             <div style={{
-              marginTop: top && w ? scrollPosition - 1100 : 0
+              marginTop: top && w ? scrollPosition - 1730 : 0
             }}>
               <SlideMini />
             </div>

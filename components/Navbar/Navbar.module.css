@@ -13,8 +13,11 @@
     font-size: 2rem;
     padding: 1rem;
     border-radius: 2rem;
+    color: var(--color2);
+    transition: .4s;
 }
 
 .container li a:hover {
-    background-color: rgb(255, 226, 132);
+    background-color: var(--color2);
+    color: var(--headerBackgroundColor);
 }

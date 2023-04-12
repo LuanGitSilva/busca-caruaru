@@ -5,4 +5,5 @@ export type Place = {
     image?: any;
     contact: string;
     address: string;
+    maps: string;
 }

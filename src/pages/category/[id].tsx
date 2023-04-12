@@ -4,12 +4,19 @@ import styles from "../../styles/CategoryId.module.css";
 import { PrismaClient } from "@prisma/client";
 import api from "../../../libs/api";
 import { BackButton } from "../../../components/BackButton";
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 type Props = {
     place: Place
 }
 
 const CategoryType = ({ place }: Props) => {
+
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
+  }, []); 
 
     return (
         <div className={styles.container}>
@@ -19,17 +26,24 @@ const CategoryType = ({ place }: Props) => {
                 <img src={place.image} alt="" />
             </div>
 
-            <h3>Sobre nós:</h3>
-            <p>{place.text} {place.text}</p>
-            <p>{place.text} {place.text}</p>
+            <h3 data-aos='fade-up'>Sobre nós:</h3>
+            <p data-aos='fade-up'>{place.text} {place.text}</p>
+            <p data-aos='fade-up'>{place.text} {place.text}</p>
 
-            <h3>Nosso endereço:</h3>
-            <p>{place.address}</p>
+            <h3 data-aos='fade-up'>Nosso endereço:</h3>
+            <p data-aos='fade-up'>{place.address}</p>
 
-            <h3>Nosso contato:</h3>
-            <p>{place.contact}</p>
+            <h3 data-aos='fade-up'>Nosso contato:</h3>
+            <p data-aos='fade-up'>{place.contact}</p>
 
-            <BackButton />
+            <div data-aos='fade-up' className={styles.googleMaps}>
+              <iframe src={place.maps} width="100%" height="100%" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            
+
+            <div data-aos='fade-up'>
+              <BackButton />
+            </div>
         </div>
     );
 }
