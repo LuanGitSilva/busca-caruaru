@@ -16,23 +16,25 @@ import Swiper2 from './swiper2';
 
 export const Slide = () => {
     return (
-        <div className={styles.slide}>
-            <Swiper
-            className={styles.swiper}
-                modules={[ Autoplay ]}
-                autoplay={{
-                    delay: 10000
-                }}
-                slidesPerView={1}
-            >
-                <SwiperSlide>
-                    <Swiper1 />
-                </SwiperSlide>
-
-                <SwiperSlide>
-                    <Swiper2 />
-                </SwiperSlide>
-            </Swiper>
+        <div className={styles.container}>
+            <h4 className={styles.aviso}>Continua após o anúncio</h4>
+            <div className={styles.slide}>
+                <Swiper
+                className={styles.swiper}
+                    modules={[ Autoplay ]}
+                    autoplay={{
+                        delay: 10000
+                    }}
+                    slidesPerView={1}
+                >
+                    <SwiperSlide>
+                        <Swiper1 />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <Swiper2 />
+                    </SwiperSlide>
+                </Swiper>
+            </div>
         </div>
       );
 }

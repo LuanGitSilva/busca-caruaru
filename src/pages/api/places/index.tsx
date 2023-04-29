@@ -1,18 +1,18 @@
 import { NextApiHandler } from "next";
 import api from "../../../../libs/api";
 
-// Getting all users
+// Getting all places
 const handlerGet: NextApiHandler = async(req, res) => {
     const places = await api.getAllPlaces();
     res.json({ status: true, places });
 }
 
-// Inserting new user
+// Inserting new place
 const handlerPost: NextApiHandler = async (req, res) => {
-    const { id, name, text, contact, address, image, maps } = req.body;
+    const { id, name, text1, text2, text3, image1, image2, image3, contact, address, maps, type } = req.body;
 
-    const newPlace = await api.addPlace(id, name, text, contact, address, image, maps).catch(() => {
-        res.json({ error: 'Usuário já existe!' })
+    const newPlace = await api.addPlace(id, name, text1, text2, text3, image1, image2, image3, contact, address, maps, type).catch(() => {
+        res.json({ error: 'Local já existe!' })
     });
 
     if(newPlace) {

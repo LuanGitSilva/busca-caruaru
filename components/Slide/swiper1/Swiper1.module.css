@@ -2,8 +2,8 @@
     background-color: #e6efff;
     display: flex;
     flex-direction: column-reverse;
-    padding: 4rem;
-    height: 40rem;
+    padding-inline: 2rem;
+    height: 30rem;
     gap: 3rem;
 }
 

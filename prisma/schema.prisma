@@ -12,12 +12,116 @@ datasource db {
 
 model Place {
   id      Int     @id  @default(autoincrement())
+  active  Boolean @default(true)
   name    String  @unique
-  text    String
-  contact String?
+  text1   String
+  text2   String?
+  text3   String?
+  image1  String  
+  image2  String?
+  image3  String?
+  contact String
   address String
-  image   String  
-  maps    String
+  maps    String?
+  type    String
+  products Product[]
+  services Service[]
+  publicservice PublicService[]
 
   @@map("places")
 }
+
+model Product {
+  id      Int @id @default(autoincrement())
+  active  Boolean @default(true)
+  image   String
+  text    String
+  price   String?
+  store   String
+  title   String
+  type    String
+  userId  Int
+
+  place Place @relation(fields: [userId], references: [id])
+
+  @@map("products")
+}
+
+model ProductType {
+  id      Int @id @default(autoincrement())
+  active  Boolean @default(true)
+  title   String
+
+  @@map("producttypes")
+}
+
+model PublicService {
+  id      Int @id @default(autoincrement())
+  active  Boolean @default(true)
+  image   String
+  text    String
+  price   String?
+  store   String
+  title   String
+  type    String
+  userId  Int
+
+  place Place @relation(fields: [userId], references: [id])
+
+  @@map("publicservices")
+}
+
+model PublicServiceType {
+  id      Int @id @default(autoincrement())
+  active  Boolean @default(true)
+  title   String
+
+  @@map("publicservicetypes")
+}
+
+model Service {
+  id      Int @id @default(autoincrement())
+  active  Boolean @default(true)
+  image   String
+  text    String
+  price   String?
+  store   String
+  title   String
+  type    String
+  userId  Int
+
+  place Place @relation(fields: [userId], references: [id])
+
+  @@map("services")
+}
+
+model ServiceType {
+  id      Int @id @default(autoincrement())
+  active  Boolean @default(true)
+  title   String
+
+  @@map("servicetypes")
+}
+
+model User {
+  id        Int     @id  @default(autoincrement())
+  active    Boolean @default(true)
+  name      String  @unique
+  email     String  @unique
+  password  String
+
+  @@map("users")
+}
+
+model New {
+  id      Int     @id  @default(autoincrement())
+  active  Boolean @default(true)
+  title   String
+  date    String
+  text    String
+  image   String
+  author  String
+
+  @@map("news")
+}
+

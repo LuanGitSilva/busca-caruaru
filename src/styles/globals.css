@@ -110,9 +110,11 @@ a {
 :root {
   --headerBackgroundColor: #003785;
   --footerBackgroundColor: #000;
-  --color2: #f1f1f1;
-  --color1: #1465bb;
+  --color1: #424a55;
+  --color2: #213465;
+  --color3: #285d35;
   --borderColor: #d1d1d1;
+  --borderColor2: #285d3561;
   --bgAll: #efeeee;
 }
 

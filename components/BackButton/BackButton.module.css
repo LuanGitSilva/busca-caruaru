@@ -10,8 +10,8 @@
     height: 4rem;
     border: none;
     border-radius: 3rem;
-    background-color: var(--headerBackgroundColor);
-    color: var(--color2);
+    background-color: var(--color1);
+    color: var(--bgAll);
     cursor: pointer;
     font-weight: bold;
     font-size: 1.7rem;
@@ -19,6 +19,6 @@
 }
 
 .btn button:hover {
-    background-color: var(--color1);
+    background-color: var(--borderColor2);
     text-decoration: underline;
 }

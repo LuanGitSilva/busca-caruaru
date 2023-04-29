@@ -7,14 +7,46 @@ import { SlideMini } from '../../components/Slide copy';
 import Introduction from '../../components/Introduction';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
+import Image from 'next/image';
+import ImgTransito from '../image/transito1.jpg';
+import ImgDanca from '../image/danca1.jpg';
+import Caruaru from '../image/caruaru.jpg';
+import Link from 'next/link';
+import SearchIcon from '@mui/icons-material/Search';
+import KeyboardIcon from '@mui/icons-material/Keyboard';
+import { signIn, signOut, useSession } from "next-auth/react";
+
 
 type Props = {
   items: News[];
 }
 
 export default function Home({ items }: Props) {
+  const { data: session, status: sessionStatus } = useSession();
+
   const [scrollPosition, setScrollPosition] = useState(0);
   const [top, setTop] = useState(false);
+
+  const [busca, setBusca] = useState('');
+    const [filtered, setFiltered] = useState<News[]>([]);
+    const [show, setShow] = useState(false);
+      
+    items.map(function(place, i) {
+        useEffect(() => {
+            let newFiltered: News[] = [];
+            for(let i of items) {
+                if(i.title.toLowerCase().indexOf(busca.toLowerCase()) > -1) {
+                    newFiltered.push(i);
+                }
+            }
+            setFiltered(newFiltered);
+            if(busca) {
+                setShow(true);
+            } else {
+                setShow(false);
+            }
+        }, [busca]);
+    });
 
   const handleScroll = () => {
       const position = window.pageYOffset;
@@ -63,39 +95,83 @@ export default function Home({ items }: Props) {
         <link rel="icon" href="/favicon.ico" /> */}
       </Head>
       <main className={styles.main}>
-        <Slide />
+        {/* <Slide /> */}
+
+        <div className={styles.caruaru}>
+          <h1>Tudo sobre a Capital do Forró em um só lugar.</h1>
+        </div>
+
         <Introduction />
+    
         <div className={styles.allNews}>
-          <h2 data-aos='fade-up'>Notícias</h2>
-          <div data-aos='fade-up' className={styles.adds}>
-            <div className={styles.ad1}>
-              <h3>Novas regras de trânsito</h3>
-              <p>Prefeitura inicia projeto para mudanças de direção em algumas ruas da cidade, segundo o secretário de turismo essa mudança irá diminuir o congestionamento nas vias de acesso aos polos festivos da cidade e aos locais que hoje apresentão maior tráfego nos bairros mais populosos.</p>
-            </div>
-            <div className={styles.ad2}>
-              <h3>Calendário de festas</h3>
-              <p>Ministério da Cultura libera o novo calendário para os eventos festivos de 2023. De acordo com o documento, teremos 58 dias de festas que irão dar espaço para apresentações de bandas e grupos de dança nacionais e regionais de diversos ritmos musicais.</p>
-            </div>
-          </div>
-          <div className={styles.body}>
-            <div data-aos='fade-up' className={styles.body1}>
-              {items.map((item, index)=>(
-                <div
-                  style={{
-                    backgroundImage: `url(${item.image})`
-                  }}
-                  className={styles.news} key={index}>
-                    <h3 data-aos='fade-up'>{item.title}</h3>
-                    <p data-aos='fade-up'>{item.text}</p>
-                </div>
-              ))}
-            </div>
-            <div style={{
-              marginTop: top && w ? scrollPosition - 1730 : 0
-            }}>
-              <SlideMini />
+          
+
+          <Slide />
+
+          <div className={styles.filtered}>
+            <h3>Busque sua notícia:</h3>
+            <div className={styles.search}>
+                <input
+                    type="text"
+                    value={busca}
+                    onChange={(e)=>setBusca(e.target.value)}
+                    placeholder="Digite sua busca" />
+                {show &&
+                    <KeyboardIcon
+                        className={styles.icon}
+                    />
+                }
+                {!show &&
+                    <SearchIcon
+                        className={styles.icon}
+                    />
+                }
             </div>
           </div>
+          
+          {show &&
+            <div className={styles.body}>
+              <div className={styles.adds}>
+                {filtered.map((item, index)=>(
+                  <div data-aos='fade-up' className={styles.ad} key={index}>
+                    <div className={styles.image}>
+                      <img
+                        src={item.image}
+                        alt={item.text}
+                      />
+                    </div>
+                    <div className={styles.adText}>
+                      <h3>{item.title}</h3>
+                      <small>Publicado: xx/xx/xxxx xxhxx</small>
+                      <p>{item.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          }
+
+          {!show &&
+            <div className={styles.body}>
+              <div className={styles.adds}>
+                {items.map((item, index)=>(
+                  <div data-aos='fade-up' className={styles.ad} key={index}>
+                    <div className={styles.image}>
+                      <img
+                        src={item.image}
+                        alt={item.text}
+                      />
+                    </div>
+                    <div className={styles.adText}>
+                      <h3>{item.title}</h3>
+                      <small>Publicado: xx/xx/xxxx xxhxx</small>
+                      <p>{item.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          }
         </div>
       </main>
     </>

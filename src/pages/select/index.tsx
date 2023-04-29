@@ -6,98 +6,22 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import router from 'next/router';
 import { BackButton } from '../../../components/BackButton';
+import { signIn } from 'next-auth/react';
+import { GetServerSideProps } from 'next';
+import { unstable_getServerSession } from 'next-auth';
+import { authOptions } from '../api/auth/[...nextauth]';
+import { AuthUser } from '../../../types/AuthUser';
 
-const Select = () => {
-    const [email, setEmail] = useState('');
-    const [key, setKey] = useState('');
-    const [visibility, setVisibility] = useState(false);
-    const [confirm, setConfirm] = useState(false);
+type Props = {
+    loggedUser: AuthUser;
+}
 
-    const sendLogin = () => {
-        if(email === 'teste@gmail.com' && key === '1234') {
-            setConfirm(true);
-        } else {
-            alert('Dados incorretos');
-        }
-    }
-
+const Select = ({ loggedUser }: Props) => {
     return (
         <>
-            {!confirm &&
+            {loggedUser &&
                 <div>
-                    <h1 className={styles.title}>Faça o login para ter acesso!</h1>
-                    <h2 className={styles.subtitle}>E-mail:</h2>
-                    <div className={styles.search}>
-                        <input
-                            type="text"
-                            value={email}
-                            onChange={(e)=>setEmail(e.target.value)}
-                            placeholder="Digite seu e-mail"
-                        />
-                        <KeyboardIcon
-                            style={{
-                                display: email ? 'none' : 'block'
-                            }}
-                            className={styles.icon}
-                        />
-                    </div>
-                    <h2 className={styles.subtitle}>Senha:</h2>
-                    <div className={styles.search}>
-                        <input
-                            type={visibility ? 'text' : 'password'}
-                            value={key}
-                            onChange={(e)=>setKey(e.target.value)}
-                            placeholder="Digite sua senha"
-                        />
-                        <KeyboardIcon
-                            style={{
-                                display: key ? 'none' : 'block'
-                            }}
-                            className={styles.icon}
-                        />
-                        {!visibility &&
-                            <VisibilityIcon
-                                onClick={() => setVisibility(true)}
-                                style={{
-                                    cursor: 'pointer',
-                                    display: key ? 'block' : 'none'
-                                }}
-                                className={styles.icon}
-                            />
-                        }
-                        {visibility &&
-                            <VisibilityOffIcon
-                                onClick={() => setVisibility(false)}
-                                style={{
-                                    cursor: 'pointer',
-                                    display: key ? 'block' : 'none'
-                                }}
-                                className={styles.icon}
-                            />
-                        }
-                    </div>
-                    <div
-                        style={{
-                            display: email && key ? 'flex' : 'none'
-                        }}
-                        className={styles.btn}
-                    >
-                            <button onClick={sendLogin}>Enviar</button>
-                    </div>
-
-                    <div
-                        style={{
-                            display: email && key ? 'none' : 'flex'
-                        }}
-                        className={styles.btn}
-                    >
-                            <BackButton/>
-                    </div>
-                </div>
-            }
-            {confirm &&
-                <div>
-                    <h1 className={styles.title}>Escolha a ação que quer executar</h1>
+                    <h1 className={styles.title}>Olá {loggedUser.name}, escolha a ação que quer executar.</h1>
                     <Link href={'/fillout'}>
                         <h2 className={styles.subtitle2}>Cadastrar um local</h2>
                     </Link>
@@ -113,6 +37,19 @@ const Select = () => {
             } 
         </>
     );
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const session = await unstable_getServerSession(
+        context.req, context.res, authOptions
+    );
+    if (!session) { return { redirect: { destination: '/', permanent: true } } }
+
+    return {
+        props: {
+            loggedUser: session.user
+        }
+    }
 }
 
 export default Select;

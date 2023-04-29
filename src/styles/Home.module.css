@@ -2,8 +2,10 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 2rem;
-  max-width: 130rem;
+  width: 100%;
+  padding: 4rem 2rem;
 }
 
 .allNews h2 {
@@ -16,64 +18,62 @@
 
 .adds {
   display: flex;
-  flex-direction: column;
-  gap: 3rem;
+  flex-direction: column; 
 }
 
-.ad1,
-.ad2 {
-  padding: 2rem 1rem 0 1.5rem;
-  border: 1px solid var(--borderColor);
+.ad {
   width: 100%;
-  height: 35rem;
+  max-width: 50rem;
   margin-inline: auto;
-  border-radius: .5rem;  
-  cursor: pointer;
+  /* cursor: pointer; */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-block: 2rem;
+  border-bottom: 1px solid var(--borderColor2);
 }
 
-.ad1 {
-  background-image: url('../image/transito1.jpg');
-  background-position: bottom center;
-  background-size: auto 100%;
-  overflow: hidden;
-  transition: .5s;
+.image {
+  text-align: center;
 }
 
-.ad1:hover,
-.ad2:hover,
-.news:hover {
-  background-size: auto 120%;
+.ad img {
+  width: 30rem;
+  height: 18rem;
+  margin-inline: auto;
 }
 
-.ad1:hover h3,
-.ad2:hover h3,
+.ad:hover h3,
 .news:hover h3 {
   text-decoration: underline;
 }
 
-.ad2 {
-  background-image: url('../image/danca1.jpg');
-  background-position: center center;
-  background-size: auto 100%;
-  overflow: hidden;
-  transition: .4s;
+.adText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
 }
 
-.ad1 h3,
-.ad2 h3,
-.news h3 {
-  font-size: 2.3rem;
+.ad h3,
+.news h3,
+.filtered h3 {
+  font-size: 1.8rem;
   color: var(--color2);
-  text-shadow: 0rem 0rem 0.5rem black;
 }
 
-.ad1 p,
-.ad2 p,
+.ad small,
+.ad small,
+.news small {
+  font-size: 1.2rem;
+  color: var(--color3);
+}
+
+.ad p,
+.ad p,
 .news p {
-  font-size: 1.7rem;
-  color: var(--color2);
-  margin-top: 3rem;
-  text-shadow: 0rem 0rem 0.5rem black;
+  font-size: 1.4rem;
 }
 
 .news {
@@ -91,18 +91,33 @@
   transition: .4s;
 }
 
+.caruaru {
+  background-image: url("../image/caruaru.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  width: 100vw;
+  height: 40rem;
+  color: var(--bgAll);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .main {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  /* gap: 4rem; */
   align-items: center;
-  max-width: 130rem;
+  /* max-width: 130rem; */
   margin-inline: auto;
 }
 
 .main h1 {
-  font-size: 3.5rem;
-  margin-top: 3rem;
+  font-size: 4rem;
+  text-shadow: 0 0 0.2em #000, 0 0 0.2em #000,
+  0 0 0.2em #000;
   text-align: center;
 }
 
@@ -113,46 +128,76 @@
   max-width: 130rem;
 }
 
-.body1 {
+.filtered {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
 }
 
-@media screen and (min-width: 400px) {
-  .ad1,
-  .ad2 {
-    padding: 4rem;
-  }
-
-  .ad1 h3,
-  .ad2 h3,
-  .news h3 {
-    margin-top: 3rem;
-    font-size: 3rem;
-  }
+.filtered h3 {
+  text-align: center;
 }
 
-@media screen and (min-width: 480px) {
-  .ad1,
-  .ad2,
-  .news {
-    background-size: auto 150%;
-  }
-
-  .ad1:hover,
-  .ad2:hover,
-  .news:hover {
-    background-size: auto 170%;
-  }
+.search {
+  margin-top: 3rem;
+  width: 100%;
+  max-width: 40rem;
+  margin-inline: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid var(--borderColor);
 }
 
-@media screen and (min-width: 899px) {
-  .body {
-    gap: 5rem;
-  }  
+.search:hover .icon {
+  color: var(--color1);
+}
 
-  .adds {
+.search p{
+  font-size: 1.5rem;
+}
+
+.search input {
+  height: 4rem;
+  width: 100%;
+  border: none;
+  font-size: 1.4rem;
+  background-color: transparent;
+  margin-inline: auto;
+}
+
+.search input:focus {
+  outline: 0;
+}
+
+.icon {
+  height: 3rem;
+  width: 3rem;
+  color: var(--borderColor);
+}
+
+@media screen and (min-width: 700px) {
+  .ad {
     flex-direction: row;
+    align-items: center;
+    max-width: 120rem;
   }
+
+  .adText {
+    text-align: start;
+  }
+
+  .filtered {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+
+  .search {
+    /* margin-top: 0; */
+    margin: 0;
+  }
+
 }

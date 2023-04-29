@@ -1,21 +1,159 @@
-.container {
-    padding: 3rem 2rem;
+.containerGeral {
     text-align: center;
-    max-width: 130rem;
     margin-inline: auto;
 }
 
 .top {
+    position: fixed;
+    z-index: 3;
+    height: 100vh;
+    left: 0;
+}
+
+.logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-inline: 2rem;
+}
+
+/* ***************************** */
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: fixed;
+    padding-top: 1rem;
+    width: 70vw;
+    gap: 1rem;
+    background-color: var(--borderColor);
+    overflow: hidden;
+    transition: .4s;
+}
+
+.container {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
+    list-style: none;
+    padding: 0;
     gap: 1rem;
 }
 
-@media screen and (min-width: 800px) {
+.close {
+    text-align: start;
+    padding: 1rem;
+    color: var(--color3);
+}
+
+.closeImg {
+    width: 5rem;
+    height: 5rem;
+    cursor: pointer;
+}
+
+.openImg {
+    display: block;
+    width: 5rem;
+    height: 5rem;
+    color: var(--bgAll);
+    cursor: pointer;
+}
+
+.container li a,
+.li,
+.title {
+    font-size: 2.1rem;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    color: var(--bgAll);
+    transition: .4s;
+    cursor: pointer;
+    color: var(--color3);
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.container li a:hover
+.li:hover {
+    text-decoration: underline;
+}
+
+/* mobile */
+.nav2 {
+    display: none;
+}
+
+@media (min-width: 840px) {
     .top {
+        display: none;
+    }
+
+    .openImg {
+        display: none;
+    }
+
+    .container2 {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        list-style: none;
+        padding: 0;
+    }
+
+    .containerGeral {
+        display: flex;
         flex-direction: row;
         justify-content: space-between;
+    }
+
+    .nav2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        gap: .8rem;
+        transition: .4s;
+        padding-left: 2rem;
+    }
+
+    .container2 li a,
+    .container3 li a,
+    .li2 {
+        font-size: 1.5rem;
+        padding-inline: .5rem;
+        color: var(--bgAll);
+        transition: .4s;
+        cursor: pointer;
+        list-style: none;
+    }
+
+    .title2 {
+        font-size: 1.5rem;
+        padding-inline: .5rem;
+        color: var(--bgAll);
+        list-style: none;
+    }
+
+    .container3 {
+        display: flex;
+        background-color: var(--color2);
+        border-radius: 5rem;
+        padding: .5rem 1rem;
+    }
+
+    .title2 {
+        font-size: 1.6rem;
+        font-weight: bold;
+    }
+
+    .logo {
+        width: auto;
     }
 }

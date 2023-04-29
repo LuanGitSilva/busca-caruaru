@@ -82,30 +82,32 @@
 /* search */
 
 .search {
-    background-color: #fff;
+    margin-top: 3rem;
     width: 100%;
     max-width: 40rem;
     margin-inline: auto;
-    border-radius: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: .7rem;
-    border: 1px solid var(--borderColor);
-}
-
-.search p{
+    border-bottom: 1px solid var(--borderColor);
+  }
+  
+  .search:hover .icon {
+    color: var(--color1);
+  }
+  
+  .search p{
     font-size: 1.5rem;
-}
-
-.search input {
+  }
+  
+  .search input {
     height: 4rem;
     width: 100%;
     border: none;
-    font-size: 2rem;
-    padding: 1rem;
-    border-radius: 2rem;
-}
+    font-size: 1.4rem;
+    background-color: transparent;
+    margin-inline: auto;
+  }
 
 .search input:focus {
     outline: 0;
@@ -125,4 +127,76 @@
     .search {
         margin-top: 0;
     }
+}
+
+.listas {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-content: center;
+    max-width: 70rem;
+    margin-inline: auto;
+}
+
+.listas ul {
+    border: 1px solid var(--borderColor);
+    border-radius: .5rem;
+    height: 15rem;
+    width: 27rem;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.listas li a {
+    padding: 0;
+}
+
+@media screen and (min-width: 650px) {
+    .listas {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.listName {
+    text-align: center;
+    font-size: 1.4rem;
+    padding-block: 2rem;
+}
+
+.listName p {
+    width: 22rem;
+    cursor: pointer;
+    background-color: var(--borderColor);
+    margin-inline: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrow {
+    width: 3rem;
+    height: 3rem;
+}
+
+
+.listName ul {
+    overflow: hidden;
+    width: 100%;
+    position: absolute;
+}
+
+.listName ul li {
+    background-color: var(--borderColor);
+    width: 22rem;
+    margin-inline: auto;
+    cursor: pointer;
+    overflow: hidden;
+    padding-block: .5rem;
+}
+
+.subtitle small {
+    font-weight: 400;
+
 }

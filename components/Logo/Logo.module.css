@@ -3,6 +3,27 @@
 }
 
 .container h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
     color: var(--color2);
+    color: var(--bgAll);
+}
+
+.icon {
+    display: flex;
+}
+
+.icon h1 {
+    font-size: 3rem;
+}
+
+.image {
+    height: 4.5rem;
+    width: 4rem;
+    color: var(--bgAll);
+    /* margin-left: -.2rem; */
+}
+
+.margin {
+    margin-top: -1.3rem;
+    text-align: start;
 }

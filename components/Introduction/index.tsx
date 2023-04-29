@@ -28,20 +28,28 @@ const Introduction = () => {
       }, [scrollTop]);
 
     return (
-        <div className={styles.container}>
-            <div data-aos='fade-up' className={styles.question1} >
-                <h2 >
-                    Como o Busca Caruaru Funciona?
-                </h2>
-            </div>
-            <div data-aos='fade-up' className={styles.question2} >
-                <h2 >
-                    Como encontrar o lugar que estou procurando?
-                </h2>
-            </div>
+        <div data-aos='fade-up'>
+            <div className={styles.container}>
+                <div className={styles.question} >
+                    <h2 >
+                        O que posso encontrar no Busca Caruaru?
+                    </h2>
+                    <p>
+                        Aqui você fica por dentro das notícias mais recentes de Caruaru e ainda consegue encontrar locais, produtos ou serviços que você esteja procurando.
+                    </p>
+                </div>
+                <div className={styles.boxeContainer} >
+                    <div className={styles.boxes}>
+                        <div className={styles.box}>Serviços públicos</div>
+                        <div className={styles.box}>Serviços</div>
+                        <div className={styles.box}>Produtos</div>
+                        <div className={styles.box}>Notícias</div>
+                        <div className={styles.box}>Festas</div>
+                        <div className={styles.box}>Turismo</div>
+                        <div className={styles.box}>Todos os locais</div>
+                    </div>
+                </div>
 
-            <div className={styles.btn} data-aos='fade-up'>
-                <button onClick={()=>router.push('/category')}>Pesquisar</button>
             </div>
         </div>
     );

@@ -15,10 +15,7 @@ const Category = ({ places }: Props) => {
     const [busca, setBusca] = useState('');
     const [filtered, setFiltered] = useState<Place[]>([]);
     const [show, setShow] = useState(false);
-    
-    
-        
-    
+      
     places.map(function(place, i) {
         useEffect(() => {
             let newFiltered: Place[] = [];

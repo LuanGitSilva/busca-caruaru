@@ -4,8 +4,6 @@ import styles from "../../styles/CategoryId.module.css";
 import { PrismaClient } from "@prisma/client";
 import api from "../../../libs/api";
 import { BackButton } from "../../../components/BackButton";
-import Aos from 'aos';
-import 'aos/dist/aos.css';
 import { useEffect } from "react";
 
 type Props = {
@@ -13,35 +11,41 @@ type Props = {
 }
 
 const CategoryType = ({ place }: Props) => {
-
-  useEffect(() => {
-    Aos.init({ duration: 2000 });
-  }, []); 
-
     return (
         <div className={styles.container}>
             <h1>{place.name}</h1>
 
             <div className={styles.image}>
-                <img src={place.image} alt="" />
+                <img src={place.image1} alt="" />
             </div>
 
-            <h3 data-aos='fade-up'>Sobre nós:</h3>
-            <p data-aos='fade-up'>{place.text} {place.text}</p>
-            <p data-aos='fade-up'>{place.text} {place.text}</p>
+            <h3>Sobre nós:</h3>
+            <p>{place.text1}</p>
 
-            <h3 data-aos='fade-up'>Nosso endereço:</h3>
-            <p data-aos='fade-up'>{place.address}</p>
+            <div className={styles.image}>
+                <img src={place.image2} alt="" />
+            </div>
 
-            <h3 data-aos='fade-up'>Nosso contato:</h3>
-            <p data-aos='fade-up'>{place.contact}</p>
+            <p>{place.text2}</p>
 
-            <div data-aos='fade-up' className={styles.googleMaps}>
+            <div className={styles.image}>
+                <img src={place.image3} alt="" />
+            </div>
+
+            <p>{place.text3}</p>
+
+            <h3>Nosso endereço:</h3>
+            <p>{place.address}</p>
+
+            <h3>Nosso contato:</h3>
+            <p>{place.contact}</p>
+
+            <div className={styles.googleMaps}>
               <iframe src={place.maps} width="100%" height="100%" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
             </div>
             
 
-            <div data-aos='fade-up'>
+            <div>
               <BackButton />
             </div>
         </div>
