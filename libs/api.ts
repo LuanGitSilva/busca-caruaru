@@ -396,5 +396,219 @@ export default {
                 title
             }
         });
+    },
+    getAllNews: async () => {
+        const news = await prisma.new.findMany({
+            where: {
+                active: true
+            },
+            select: {
+                id: true,
+                title: true,
+                text: true,
+                image: true,
+                date: true,
+                author: true,
+            },
+            orderBy: {
+                id: 'asc'
+            }
+        });
+
+        return news;
+    },
+    addNews: async (id: number, title: string, text: string, image: string, date: string, author: string) => {
+        return await prisma.new.create({
+            data: {
+                id,
+                title,
+                text,
+                image,
+                date,
+                author
+            }
+        });
+    },
+    getNews: async (id: number) => {
+        const news = await prisma.new.findUnique({
+            where: { id }
+        });
+        return news;
+    },
+    updateNews: async (id?: number, title?: string, text?: string, image?: string, date?: string, author?: string) => {
+        let data: {
+            title?: string,
+            text?: string,
+            image?: string,
+            date?: string,
+            author?: string
+        } = {};
+    
+        if (title) { data.title = title }
+        if (text) { data.text = text }
+        if (image) { data.image = image }
+        if (date) { data.date = date }
+        if (author) { data.author = author }
+    
+        const updatedNews = await prisma.new.update({
+            where: {
+                id
+            },
+            data
+        });
+        return updatedNews;
+    },
+    deleteNews: async (id: number) => {
+        return await prisma.new.delete({ 
+            where: { id }
+         })
+    },
+    getAllParties: async () => {
+        const parties = await prisma.party.findMany({
+            where: {
+                active: true
+            },
+            select: {
+                id: true,
+                title: true,
+                date: true,
+                text: true,
+                image: true,
+                local: true,
+                responsible: true,
+                maps: true
+            },
+            orderBy: {
+                id: 'asc'
+            }
+        });
+
+        return parties;
+    },
+    addParty: async (id: number, title: string, text: string, date: string, local: string, image: string, responsible: string, maps?: string) => {
+        return await prisma.party.create({
+            data: {
+                id,
+                title,
+                date,
+                text,
+                image,
+                local,
+                responsible,
+                maps
+            }
+        });
+    },
+    getParty: async (id: number) => {
+        const party = await prisma.party.findUnique({
+            where: { id }
+        });
+        return party;
+    },
+    updateParty: async (id?: number, title?: string, text?: string, date?: string, image?: string, local?: string, responsible?: string, maps?: string) => {
+        let data: {
+            title?: string,
+            text?: string,
+            date?: string,
+            image?: string,
+            local?: string,
+            responsible?: string,
+            maps?: string
+        } = {};
+    
+        if (title) { data.title = title }
+        if (text) { data.text = text }
+        if (date) { data.date = date }
+        if (local) { data.local = local }
+        if (image) { data.image = image }
+        if (responsible) { data.responsible = responsible }
+        if (maps) { data.maps = maps }
+    
+        const updatedParty = await prisma.party.update({
+            where: {
+                id
+            },
+            data
+        });
+        return updatedParty;
+    },
+    deleteParty: async (id: number) => {
+        return await prisma.party.delete({ 
+            where: { id }
+         })
+    },
+    getAllTourism: async () => {
+        const tourism = await prisma.tourism.findMany({
+            where: {
+                active: true
+            },
+            select: {
+                id: true,
+                title: true,
+                date: true,
+                text: true,
+                image: true,
+                local: true,
+                responsible: true,
+                maps: true
+            },
+            orderBy: {
+                id: 'asc'
+            }
+        });
+
+        return tourism;
+    },
+    addTourism: async (id: number, title: string, text: string, date: string, local: string, image: string, responsible: string, maps?: string) => {
+        return await prisma.tourism.create({
+            data: {
+                id,
+                title,
+                date,
+                text,
+                image,
+                local,
+                responsible,
+                maps
+            }
+        });
+    },
+    getTourism: async (id: number) => {
+        const tourism = await prisma.tourism.findUnique({
+            where: { id }
+        });
+        return tourism;
+    },
+    updateTourism: async (id?: number, title?: string, text?: string, date?: string, image?: string, local?: string, responsible?: string, maps?: string) => {
+        let data: {
+            title?: string,
+            text?: string,
+            date?: string,
+            image?: string,
+            local?: string,
+            responsible?: string,
+            maps?: string
+        } = {};
+    
+        if (title) { data.title = title }
+        if (text) { data.text = text }
+        if (date) { data.date = date }
+        if (local) { data.local = local }
+        if (image) { data.image = image }
+        if (responsible) { data.responsible = responsible }
+        if (maps) { data.maps = maps }
+    
+        const updatedTourism = await prisma.tourism.update({
+            where: {
+                id
+            },
+            data
+        });
+        return updatedTourism;
+    },
+    deleteTourism: async (id: number) => {
+        return await prisma.tourism.delete({ 
+            where: { id }
+         })
     }
 }

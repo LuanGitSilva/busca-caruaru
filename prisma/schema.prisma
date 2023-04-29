@@ -125,3 +125,30 @@ model New {
   @@map("news")
 }
 
+model Party {
+  id      Int     @id  @default(autoincrement())
+  active      Boolean @default(true)
+  title       String
+  date        String
+  text        String
+  image       String
+  local       String
+  responsible String
+  maps        String?
+
+  @@map("parties")
+}
+
+model Tourism {
+  id      Int     @id  @default(autoincrement())
+  active      Boolean @default(true)
+  title       String
+  date        String?
+  text        String
+  image       String
+  local       String
+  responsible String?
+  maps        String?
+
+  @@map("tourism")
+}
