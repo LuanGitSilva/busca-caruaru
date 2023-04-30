@@ -74,6 +74,39 @@ const Places = () => {
                                     <Link className={styles.subtitle} href={'/delete'}>Deletar serviço público</Link>
                                 </li> */}
                             </ul>
+                            <ul>
+                                <li>
+                                    <Link className={styles.subtitle} href={'/newnews'}>Inserir notícia</Link>
+                                </li>
+                                <li>
+                                    <Link className={styles.subtitle} href={'/editnews'}>Editar notícia</Link>
+                                </li>
+                                <li>
+                                    <Link className={styles.subtitle} href={'/deletenews'}>Deletar notícia</Link>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <Link className={styles.subtitle} href={'/newparty'}>Inserir festa</Link>
+                                </li>
+                                <li>
+                                    <Link className={styles.subtitle} href={'/editparty'}>Editar festa</Link>
+                                </li>
+                                <li>
+                                    <Link className={styles.subtitle} href={'/deleteparty'}>Deletar festa</Link>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <Link className={styles.subtitle} href={'/newtourism'}>Inserir turismo</Link>
+                                </li>
+                                <li>
+                                    <Link className={styles.subtitle} href={'/edittourism'}>Editar turismo</Link>
+                                </li>
+                                <li>
+                                    <Link className={styles.subtitle} href={'/deletetourism'}>Deletar turismo</Link>
+                                </li>
+                            </ul>
                         </div>
                         <BackButton />
                     </div>

@@ -5,21 +5,23 @@ import { BackButton } from "../../../components/BackButton";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
-const NewNews = () => {    
+const NewTourism = () => {    
     const { data: session, status: sessionStatus } = useSession();
 
     const router = useRouter();
 
     const [id, setId] = useState();
     const [title, setTitle] = useState('');
-    const [image, setImage] = useState('');
-    const [text, setText] = useState('');
     const [date, setDate] = useState('');
-    const [author, setAuthor] = useState('');
+    const [text, setText] = useState('');
+    const [image, setImage] = useState('');
+    const [local, setLocal] = useState('');
+    const [responsible, setResponsible] = useState('');
+    const [maps, setMaps] = useState('');
 
     const sendInfo = async () => {
-        if(title && image && text && date && author ) {
-            let response = await fetch("/api/news", {
+        if(title && image && text && local) {
+            let response = await fetch("/api/tourism", {
                 method: 'POST',
                 body: JSON.stringify({
                     id: id,
@@ -27,7 +29,9 @@ const NewNews = () => {
                     image: image,
                     text: text,
                     date: date,
-                    author: author
+                    local: local,
+                    responsible: responsible,
+                    maps: maps
                 }),
                 headers: {
                     'Content-Type': 'application/json'
@@ -35,12 +39,14 @@ const NewNews = () => {
             });
             let json = await response.json();
             if(json.status) {
-                alert('Notícia cadastrada com sucesso!');
+                alert('Turismo cadastrado com sucesso!');
                 setTitle('');
                 setImage('');
                 setText('');
                 setDate('');
-                setAuthor('');
+                setResponsible('');
+                setLocal('');
+                setMaps('');
             }
         } else {
             alert("Preencha todos os dados!")
@@ -66,15 +72,15 @@ const NewNews = () => {
                         </>
                     }
 
-                    <h1 className={styles.title}>Insira os dados da  notícia</h1>
+                    <h1 className={styles.title}>Insira os dados sobre o turismo</h1>
                     
-                    <h2 className={styles.subtitle}>Título da notícia:</h2>
+                    <h2 className={styles.subtitle}>Título do turismo:</h2>
                     <div className={styles.search}>
                         <input
                             type="text"
                             value={title}
                             onChange={(e)=>setTitle(e.target.value)}
-                            placeholder="Digite o título da notícia" />
+                            placeholder="Digite o título do turismo" />
                         <KeyboardIcon
                             style={{
                                 display: title ? 'none' : 'block'
@@ -83,13 +89,13 @@ const NewNews = () => {
                         />
                     </div>
                     
-                    <h2 className={styles.subtitle}>Url da imagem da notícia:</h2>
+                    <h2 className={styles.subtitle}>Url da imagem do turismo:</h2>
                     <div className={styles.search}>
                         <input
                             type="text"
                             value={image}
                             onChange={(e)=>setImage(e.target.value)}
-                            placeholder="Digite a url da primeira imagem da notícia" />
+                            placeholder="Digite a url da imagem do turismo" />
                         <KeyboardIcon
                             style={{
                                 display: image ? 'none' : 'block'
@@ -98,13 +104,13 @@ const NewNews = () => {
                         />
                     </div>
 
-                    <h2 className={styles.subtitle}>Data da notícia:</h2>
+                    <h2 className={styles.subtitle}>Data do turismo:</h2>
                     <div className={styles.search}>
                         <input
                             type="text"
                             value={date}
                             onChange={(e)=>setDate(e.target.value)}
-                            placeholder="Digite a data da notícia (ex.: 01/06/2023)" />
+                            placeholder="Digite a data do turismo (ex.: 01/06/2023)" />
                         <KeyboardIcon
                             style={{
                                 display: date ? 'none' : 'block'
@@ -113,13 +119,13 @@ const NewNews = () => {
                         />
                     </div>
 
-                    <h2 className={styles.subtitle}>Texto da notícia:</h2>
+                    <h2 className={styles.subtitle}>Texto sobre o turismo:</h2>
                     <div className={styles.search}>
                         <input
                             type="text"
                             value={text}
                             onChange={(e)=>setText(e.target.value)}
-                            placeholder="Digite o texto da notícia" />
+                            placeholder="Digite o texto sobre o turismo" />
                         <KeyboardIcon
                             style={{
                                 display: text ? 'none' : 'block'
@@ -128,16 +134,46 @@ const NewNews = () => {
                         />
                     </div>
                     
-                    <h2 className={styles.subtitle}>Fonte da notícia:</h2>
+                    <h2 className={styles.subtitle}>Responsável:</h2>
                     <div className={styles.search}>
                         <input
                             type="text"
-                            value={author}
-                            onChange={(e)=>setAuthor(e.target.value)}
-                            placeholder="Digite o nome da fonte da notícia" />
+                            value={responsible}
+                            onChange={(e)=>setResponsible(e.target.value)}
+                            placeholder="Digite o nome do responsável do turismo" />
                         <KeyboardIcon
                             style={{
-                                display: author ? 'none' : 'block'
+                                display: responsible ? 'none' : 'block'
+                            }}
+                            className={styles.icon}
+                        />
+                    </div>
+
+                    <h2 className={styles.subtitle}>local:</h2>
+                    <div className={styles.search}>
+                        <input
+                            type="text"
+                            value={local}
+                            onChange={(e)=>setLocal(e.target.value)}
+                            placeholder="Informe o local do turismo" />
+                        <KeyboardIcon
+                            style={{
+                                display: local ? 'none' : 'block'
+                            }}
+                            className={styles.icon}
+                        />
+                    </div>
+
+                    <h2 className={styles.subtitle}>Localização no maps:</h2>
+                    <div className={styles.search}>
+                        <input
+                            type="text"
+                            value={maps}
+                            onChange={(e)=>setMaps(e.target.value)}
+                            placeholder="Digite o link do GoogleMaps" />
+                        <KeyboardIcon
+                            style={{
+                                display: maps ? 'none' : 'block'
                             }}
                             className={styles.icon}
                         />
@@ -145,7 +181,7 @@ const NewNews = () => {
 
                     <div
                         style={{
-                            display: title && image && text && date && author ? 'flex' : 'none'
+                            display: title && image && text && local ? 'flex' : 'none'
                         }}
                         className={styles.btn}
                     >
@@ -154,7 +190,7 @@ const NewNews = () => {
 
                     <div
                         style={{
-                            display: title && image && text && date && author ? 'none' : 'flex'
+                            display: title && image && text && local ? 'none' : 'flex'
                         }}
                     >
                         <BackButton />
@@ -165,4 +201,4 @@ const NewNews = () => {
     );
 }
 
-export default NewNews;
+export default NewTourism;

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import KeyboardIcon from '@mui/icons-material/Keyboard';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { BackButton } from '../../../components/BackButton';
 import { signIn } from 'next-auth/react';
 import { GetServerSideProps } from 'next';

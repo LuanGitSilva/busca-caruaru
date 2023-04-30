@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Place } from "../../../types/Place";
 import styles from '../../styles/Category.module.css';
 import KeyboardIcon from '@mui/icons-material/Keyboard';
 import { BackButton } from "../../../components/BackButton";
@@ -7,12 +6,14 @@ import { useSession } from "next-auth/react";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import api from "../../../libs/api";
+import { Tourism } from "../../../types/Tourism";
+
 
 type Props = {
-    places: Place[];
+    tourism: Tourism[];
 }
 
-const Delete = ({ places }: Props) => {
+const DeleteTourism = ({ tourism }: Props) => {
     const { data: session, status: sessionStatus } = useSession();
 
     const [show, setShow] = useState(false);
@@ -25,16 +26,16 @@ const Delete = ({ places }: Props) => {
     }
 
     const [id, setId] = useState<number>();
-    const [name, setName] = useState('');
+    const [title, setTitle] = useState('');
 
     const sendInfo = async () => {
         if(id) {
 
-            await fetch(`/api/places/${id}`, {
+            await fetch(`/api/tourism/${id}`, {
                 method: 'DELETE'
             });
 
-            alert('Local deletado com sucesso!')
+            alert('Local de turismo deletado com sucesso!')
 
         } else {
             alert("Preencha os dados!")
@@ -45,9 +46,9 @@ const Delete = ({ places }: Props) => {
         <>
             {sessionStatus === 'authenticated' &&
                 <>
-                    <h1 className={styles.title}>Insira os dados para deletar o local</h1>
+                    <h1 className={styles.title}>Insira os dados para deletar o local de turismo</h1>
 
-                    <h2 className={styles.subtitle}>Selecione o local: <small>{name}</small></h2>
+                    <h2 className={styles.subtitle}>Selecione o local de turismo: <small>{title}</small></h2>
                     <div className={styles.listName}>
                         <p
                             onClick={handleClick}
@@ -66,17 +67,17 @@ const Delete = ({ places }: Props) => {
                                 height: show ? '100%' : '0'
                             }}
                         >
-                            {places.map((item, index) => (
+                            {tourism.map((item, index) => (
                                 <li
                                     onClick={()=>{
-                                        setName(item.name)
+                                        setTitle(item.title)
                                         setId(item.id)
                                         setShow(false)
-                                        console.log(name)
+                                        console.log(title)
                                         console.log(id)
                                     }}
                                     key={index}
-                                >{item.name}</li>
+                                >{item.title}</li>
                             ))}
                         </ul>
                     </div>
@@ -106,10 +107,10 @@ const Delete = ({ places }: Props) => {
 
 export const getStaticProps = async () => {
     // DRY = Don't Repeat Yourself
-    const places = await api.getAllPlaces();  
+    const tourism = await api.getAllTourism();  
     return { 
-        props: { places }
+        props: { tourism }
     }
 }
 
-export default Delete;
+export default DeleteTourism;

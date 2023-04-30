@@ -89,52 +89,37 @@ const Edit = ({ places }: Props) => {
                 <h1 className={styles.title}>Insira os dados para alteração</h1>
 
                 <h2 className={styles.subtitle}>Selecione o local: <small>{name}</small></h2>
-                    <div className={styles.listName}>
-                        <p
-                            onClick={handleClick}
-                        >
-                            Escolher
-                            {!show &&
-                                <KeyboardArrowDownIcon className={styles.arrow} />
-                            }
-                            {show &&
-                                <KeyboardArrowUpIcon className={styles.arrow} />
-                            }
-                        </p>
-                        <ul
-                            style={{
-                                transition: '.4s',
-                                height: show ? '100%' : '0'
-                            }}
-                        >
-                            {places.map((item, index) => (
-                                <li
-                                    onClick={()=>{
-                                        setName(item.name)
-                                        setId(item.id)
-                                        setShow(false)
-                                        console.log(name)
-                                        console.log(id)
-                                    }}
-                                    key={index}
-                                >{item.name}</li>
-                            ))}
-                        </ul>
-                    </div>
-
-                <h2 className={styles.subtitle}>Digite o ID do local a ser alterado:</h2>
-                <div className={styles.search}>
-                    <input 
-                        type="number"
-                        value={id}
-                        onChange={(e)=>setId(parseInt(e.target.value))}
-                        placeholder="Digite o ID do local" />
-                    <KeyboardIcon
+                <div className={styles.listName}>
+                    <p
+                        onClick={handleClick}
+                    >
+                        Escolher
+                        {!show &&
+                            <KeyboardArrowDownIcon className={styles.arrow} />
+                        }
+                        {show &&
+                            <KeyboardArrowUpIcon className={styles.arrow} />
+                        }
+                    </p>
+                    <ul
                         style={{
-                            display: id ? 'none' : 'block'
+                            transition: '.4s',
+                            height: show ? '100%' : '0'
                         }}
-                        className={styles.icon}
-                    />
+                    >
+                        {places.map((item, index) => (
+                            <li
+                                onClick={()=>{
+                                    setName(item.name)
+                                    setId(item.id)
+                                    setShow(false)
+                                    console.log(name)
+                                    console.log(id)
+                                }}
+                                key={index}
+                            >{item.name}</li>
+                        ))}
+                    </ul>
                 </div>
             
                 <h2 className={styles.subtitle}>Nome do local:</h2>

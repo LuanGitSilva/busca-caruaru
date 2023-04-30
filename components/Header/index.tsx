@@ -1,6 +1,5 @@
 import { Logo } from '../Logo';
 import styles from './Header.module.css';
-// import { Navbar } from '../Navbar';
 
 import { navigationLinks } from '../../utils/menu';
 import { admLinks } from '../../utils/menu';
@@ -12,22 +11,7 @@ import { useState, useEffect } from 'react';
 
 
 export const Header = () => {
-    // const [desk, setDesk] = useState(false);
     const [close, setClose] = useState(false);
-
-    
-    // useEffect(() => {
-    //     window.addEventListener('desk', function(){
-    //         if (innerWidth > 768) {
-    //             setDesk(true);
-    //             console.log(innerWidth);
-    //         } else {
-    //             setDesk(false);
-    //             console.log(innerWidth);
-    //         }
-    //     });
-    //     console.log(innerWidth);
-    // }, [innerWidth]);
 
     const abrir = () => {
         setClose(true);

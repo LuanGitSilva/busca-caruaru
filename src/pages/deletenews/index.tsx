@@ -1,18 +1,18 @@
 import { useState } from "react";
-import { Place } from "../../../types/Place";
 import styles from '../../styles/Category.module.css';
 import KeyboardIcon from '@mui/icons-material/Keyboard';
 import { BackButton } from "../../../components/BackButton";
 import { useSession } from "next-auth/react";
+import { News } from "../../../types/News";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import api from "../../../libs/api";
 
 type Props = {
-    places: Place[];
+    news: News[];
 }
 
-const Delete = ({ places }: Props) => {
+const Delete = ({ news }: Props) => {
     const { data: session, status: sessionStatus } = useSession();
 
     const [show, setShow] = useState(false);
@@ -25,16 +25,16 @@ const Delete = ({ places }: Props) => {
     }
 
     const [id, setId] = useState<number>();
-    const [name, setName] = useState('');
+    const [title, setTitle] = useState('');
 
     const sendInfo = async () => {
         if(id) {
 
-            await fetch(`/api/places/${id}`, {
+            await fetch(`/api/news/${id}`, {
                 method: 'DELETE'
             });
 
-            alert('Local deletado com sucesso!')
+            alert('Notícia deletada com sucesso!')
 
         } else {
             alert("Preencha os dados!")
@@ -45,9 +45,9 @@ const Delete = ({ places }: Props) => {
         <>
             {sessionStatus === 'authenticated' &&
                 <>
-                    <h1 className={styles.title}>Insira os dados para deletar o local</h1>
+                    <h1 className={styles.title}>Insira os dados para deletar a notícia</h1>
 
-                    <h2 className={styles.subtitle}>Selecione o local: <small>{name}</small></h2>
+                    <h2 className={styles.subtitle}>Selecione a notícia: <small>{title}</small></h2>
                     <div className={styles.listName}>
                         <p
                             onClick={handleClick}
@@ -66,17 +66,17 @@ const Delete = ({ places }: Props) => {
                                 height: show ? '100%' : '0'
                             }}
                         >
-                            {places.map((item, index) => (
+                            {news.map((item, index) => (
                                 <li
                                     onClick={()=>{
-                                        setName(item.name)
+                                        setTitle(item.title)
                                         setId(item.id)
                                         setShow(false)
-                                        console.log(name)
+                                        console.log(title)
                                         console.log(id)
                                     }}
                                     key={index}
-                                >{item.name}</li>
+                                >{item.title}</li>
                             ))}
                         </ul>
                     </div>
@@ -106,9 +106,9 @@ const Delete = ({ places }: Props) => {
 
 export const getStaticProps = async () => {
     // DRY = Don't Repeat Yourself
-    const places = await api.getAllPlaces();  
+    const news = await api.getAllNews();  
     return { 
-        props: { places }
+        props: { news }
     }
 }
 

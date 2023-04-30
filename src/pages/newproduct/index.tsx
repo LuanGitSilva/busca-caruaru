@@ -29,6 +29,15 @@ const RegisterProduct = ({ places, producttype }: Props) => {
         }
     }
 
+    const [show2, setShow2] = useState(false);
+    const handleClick2 = () => {
+        if(show2) {
+            setShow2(false);
+        } else {
+            setShow2(true);
+        }
+    }
+
     const [id, setId] = useState();
     const [image, setImage] = useState('');
     const [text, setText] = useState('');
@@ -36,9 +45,16 @@ const RegisterProduct = ({ places, producttype }: Props) => {
     const [store, setStore] = useState('');
     const [title, setTitle] = useState('');
     const [type, setType] = useState('');
-    const [userId, setUserId] = useState<number>( );
+    const [userId, setUserId] = useState<number>(0);
 
     const sendInfo = async () => {
+        console.log('imagem: ' + image)
+        console.log('texto: ' + text)
+        console.log('preço: ' + price)
+        console.log('loja: ' + store)
+        console.log('título: ' + title)
+        console.log('tipo: ' + type)
+        console.log('user id: ' + userId)
         if(image && text && price && store && title && type && userId) {
             console.log(image)
             console.log(text)
@@ -196,28 +212,27 @@ const RegisterProduct = ({ places, producttype }: Props) => {
 
                     <div className={styles.listName}>
                         <p
-                            onClick={handleClick}
+                            onClick={handleClick2}
                         >
                             Escolher
-                            {!show &&
+                            {!show2 &&
                                 <KeyboardArrowDownIcon className={styles.arrow} />
                             }
-                            {show &&
+                            {show2 &&
                                 <KeyboardArrowUpIcon className={styles.arrow} />
                             }
                         </p>
                         <ul
                             style={{
                                 transition: '.4s',
-                                height: show ? '100%' : '0'
+                                height: show2 ? '100%' : '0'
                             }}
                         >
                             {producttype.map((item, index) => (
                                 <li
                                     onClick={()=>{
                                         setType(item.title)
-                                        setUserId(item.id)
-                                        setShow(false)
+                                        setShow2(false)
                                         console.log(store)
                                         console.log(userId)
                                     }}
@@ -229,7 +244,7 @@ const RegisterProduct = ({ places, producttype }: Props) => {
 
                     <div
                         style={{
-                            display: image && text && price && store && title && type && userId ? 'flex' : 'none'
+                            display: image && text && price && store && title && type ? 'flex' : 'none'
                         }}
                         className={styles.btn}
                     >
@@ -238,7 +253,7 @@ const RegisterProduct = ({ places, producttype }: Props) => {
 
                     <div
                         style={{
-                            display: image && text && price && store && title && type && userId ? 'none' : 'flex'
+                            display: image && text && price && store && title && type  ? 'none' : 'flex'
                         }}
                     >
                         <BackButton />

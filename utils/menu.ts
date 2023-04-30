@@ -1,12 +1,12 @@
 export const navigationLinks = [
     { label: 'Início', path: '/' },
     { label: 'Todos os locais', path: '/category' },
-    { label: 'Serviços públicos', path: '/servicospublicos' },
-    { label: 'Serviços', path: '/servicos' },
-    { label: 'Produtos', path: '/produtos' },
-    { label: 'Notícias', path: '/noticias' },
-    { label: 'Festas', path: '/festas' },
-    { label: 'Turismo', path: '/turismo' }
+    { label: 'Serviços públicos', path: '/publicservices' },
+    { label: 'Serviços', path: '/services' },
+    { label: 'Produtos', path: '/product' },
+    { label: 'Notícias', path: '/news' },
+    { label: 'Festas', path: '/parties' },
+    { label: 'Turismo', path: '/turism' }
 ];
 
 export const admLinks = [

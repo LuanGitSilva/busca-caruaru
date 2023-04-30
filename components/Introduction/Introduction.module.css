@@ -61,6 +61,10 @@
     justify-content: center;
 }
 
+.box li {
+    list-style: none;
+}
+
 .box:hover {
     background-color: var(--borderColor);
     color: var(--headerBackgroundColor);

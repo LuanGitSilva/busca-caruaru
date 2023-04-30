@@ -29,6 +29,15 @@ const NewPublicService = ({ places, publicservicetype }: Props) => {
         }
     }
 
+    const [show2, setShow2] = useState(false);
+    const handleClick2 = () => {
+        if(show2) {
+            setShow2(false);
+        } else {
+            setShow2(true);
+        }
+    }
+
     const [id, setId] = useState();
     const [image, setImage] = useState('');
     const [text, setText] = useState('');
@@ -196,28 +205,27 @@ const NewPublicService = ({ places, publicservicetype }: Props) => {
 
                     <div className={styles.listName}>
                         <p
-                            onClick={handleClick}
+                            onClick={handleClick2}
                         >
                             Escolher
-                            {!show &&
+                            {!show2 &&
                                 <KeyboardArrowDownIcon className={styles.arrow} />
                             }
-                            {show &&
+                            {show2 &&
                                 <KeyboardArrowUpIcon className={styles.arrow} />
                             }
                         </p>
                         <ul
                             style={{
                                 transition: '.4s',
-                                height: show ? '100%' : '0'
+                                height: show2 ? '100%' : '0'
                             }}
                         >
                             {publicservicetype.map((item, index) => (
                                 <li
                                     onClick={()=>{
                                         setType(item.title)
-                                        setUserId(item.id)
-                                        setShow(false)
+                                        setShow2(false)
                                         console.log(store)
                                         console.log(userId)
                                     }}

@@ -2,15 +2,15 @@
     width: 100%;  
     display: flex;
     justify-content: center;
-    margin-top: 3rem;
+    margin-block: 3rem;
 }
 
 .btn button {
-    width: 10rem;
-    height: 4rem;
+    width: 8rem;
+    height: 3rem;
     border: none;
-    border-radius: 3rem;
-    background-color: var(--color1);
+    border-radius: .4rem;
+    background-color: var(--headerBackgroundColor);
     color: var(--bgAll);
     cursor: pointer;
     font-weight: bold;
@@ -19,6 +19,6 @@
 }
 
 .btn button:hover {
-    background-color: var(--borderColor2);
+    /* background-color: var(--color1); */
     text-decoration: underline;
 }
