@@ -6,7 +6,7 @@ export const navigationLinks = [
     { label: 'Produtos', path: '/product' },
     { label: 'Notícias', path: '/news' },
     { label: 'Festas', path: '/parties' },
-    { label: 'Turismo', path: '/turism' }
+    { label: 'Turismo', path: '/tourism' }
 ];
 
 export const admLinks = [

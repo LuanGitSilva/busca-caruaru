@@ -1,7 +1,7 @@
 .slide {
     display: none;
     height: 40rem;
-    max-width: 130rem;
+    max-width: 37rem;
     border: 1px solid var(--borderColor);
     border-radius: .5rem;
     overflow: hidden;
@@ -9,7 +9,7 @@
 }
 
 .swiper{
-    width: 40rem;
+    width: 37rem;
     height: 100%;
 }
 
