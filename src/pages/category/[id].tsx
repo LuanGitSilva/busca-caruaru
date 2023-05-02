@@ -5,40 +5,52 @@ import { PrismaClient } from "@prisma/client";
 import api from "../../../libs/api";
 import { BackButton } from "../../../components/BackButton";
 import { useEffect } from "react";
+import { Slide } from "../../../components/Slide";
 
 type Props = {
     place: Place
 }
-
+  
 const CategoryType = ({ place }: Props) => {
     return (
         <div className={styles.container}>
             <h1>{place.name}</h1>
 
-            <div className={styles.image}>
-                <img src={place.image1} alt="" />
+            <div className={styles.smallContainer}>
+              <div className={styles.image}>
+                  <img src={place.image1} alt="" />
+              </div>
+              <div>
+                <h3>Sobre nós:</h3>
+                <p>{place.text1}</p>
+              </div>
             </div>
 
-            <h3>Sobre nós:</h3>
-            <p>{place.text1}</p>
-
-            <div className={styles.image}>
-                <img src={place.image2} alt="" />
-            </div>
+            <Slide />
 
             <p>{place.text2}</p>
 
-            <div className={styles.image}>
-                <img src={place.image3} alt="" />
+            <div className={styles.smallContainer}>
+              <div className={styles.image}>
+                  <img src={place.image2} alt="" />
+              </div>
+              <div className={styles.image}>
+                  <img src={place.image3} alt="" />
+              </div>
             </div>
 
             <p>{place.text3}</p>
 
-            <h3>Nosso endereço:</h3>
-            <p>{place.address}</p>
-
-            <h3>Nosso contato:</h3>
-            <p>{place.contact}</p>
+            <div className={styles.smallContainer}>
+              <div>
+                <h3>Nosso endereço:</h3>
+                <p>{place.address}</p>
+              </div>
+              <div>
+                <h3>Nosso contato:</h3>
+                <p>{place.contact}</p>
+              </div>
+            </div>
 
             <div className={styles.googleMaps}>
               <iframe src={place.maps} width="100%" height="100%" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>

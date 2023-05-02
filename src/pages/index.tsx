@@ -106,19 +106,21 @@ export default function Home({ news, parties, tourism }: Props) {
                 <div className={styles.adds}>
                 <h2>Últimas notícias</h2>
                   {filtered.map((item, index)=>(
-                    <div data-aos='fade-up' className={styles.ad} key={index}>
-                      <div className={styles.image}>
-                        <img
-                          src={item.image}
-                          alt={item.text}
-                        />
+                    <Link href={`news/${item.id}`}>
+                      <div data-aos='fade-up' className={styles.ad} key={index}>
+                        <div className={styles.image}>
+                          <img
+                            src={item.image}
+                            alt={item.text}
+                          />
+                        </div>
+                        <div className={styles.adText}>
+                          <h3>{item.title}</h3>
+                          <small>Publicado: {item.date}</small>
+                          <p>{item.text}</p>
+                        </div>
                       </div>
-                      <div className={styles.adText}>
-                        <h3>{item.title}</h3>
-                        <small>Publicado: {item.date}</small>
-                        <p>{item.text}</p>
-                      </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -165,19 +167,21 @@ export default function Home({ news, parties, tourism }: Props) {
               <div className={styles.adds}>
               <h2>Últimas festas</h2>
                 {filtered2.map((item, index)=>(
-                  <div data-aos='fade-up' className={styles.ad} key={index}>
-                    <div className={styles.image}>
-                      <img
-                        src={item.image}
-                        alt={item.text}
-                      />
+                  <Link href={`parties/${item.id}`}>
+                    <div data-aos='fade-up' className={styles.ad} key={index}>
+                      <div className={styles.image}>
+                        <img
+                          src={item.image}
+                          alt={item.text}
+                        />
+                      </div>
+                      <div className={styles.adText}>
+                        <h3>{item.title}</h3>
+                        <small>Publicado: {item.date}</small>
+                        <p>{item.text}</p>
+                      </div>
                     </div>
-                    <div className={styles.adText}>
-                      <h3>{item.title}</h3>
-                      <small>Publicado: {item.date}</small>
-                      <p>{item.text}</p>
-                    </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -195,19 +199,21 @@ export default function Home({ news, parties, tourism }: Props) {
               <div className={styles.adds}>
               <h2>Últimos turismos</h2>
                 {filtered3.map((item, index)=>(
-                  <div data-aos='fade-up' className={styles.ad} key={index}>
-                    <div className={styles.image}>
-                      <img
-                        src={item.image}
-                        alt={item.text}
-                      />
+                  <Link href={`tourism/${item.id}`}>
+                    <div data-aos='fade-up' className={styles.ad} key={index}>
+                      <div className={styles.image}>
+                        <img
+                          src={item.image}
+                          alt={item.text}
+                        />
+                      </div>
+                      <div className={styles.adText}>
+                        <h3>{item.title}</h3>
+                        <small>Publicado: {item.date}</small>
+                        <p>{item.text}</p>
+                      </div>
                     </div>
-                    <div className={styles.adText}>
-                      <h3>{item.title}</h3>
-                      <small>Publicado: {item.date}</small>
-                      <p>{item.text}</p>
-                    </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>

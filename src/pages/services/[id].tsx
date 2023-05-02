@@ -8,6 +8,7 @@ import { Place } from "../../../types/Place";
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import { Service } from "../../../types/Service";
+import { Slide } from "../../../components/Slide";
 
 type Props = {
     service: Service,
@@ -43,19 +44,23 @@ const CategoryType = ({ service, places }: Props) => {
         <div className={styles.container}>
             <h1>{service.title}</h1>
 
-            <div className={styles.image}>
-                <img src={service.image} alt="" />
+            <div className={styles.smallContainer}>
+              <div className={styles.image}>
+                  <img src={service.image} alt="" />
+              </div>
+              <div>
+                <h3>Sobre nós:</h3>
+                <p>{service.text}</p>
+              </div>
             </div>
 
-            <h3>Sobre o produto:</h3>
-            <p>{service.text}</p>
+            <div className={styles.smallContainer}>
+              <p>Visite o prestador de serviço aqui:
+              <small onClick={go}>{store}</small>
+              </p>
+            </div>
 
-            <h3>Preço:</h3>
-            <p>{service.price}</p>
-
-            <h3>Loja:</h3>
-
-            <p onClick={go}>{store}</p>            
+            <Slide />          
 
             <div>
               <BackButton />

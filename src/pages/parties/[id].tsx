@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import { Party } from "../../../types/Party";
+import { Slide } from "../../../components/Slide";
 
 type Props = {
     party: Party
@@ -22,10 +23,10 @@ const Party = ({ party }: Props) => {
     // const [store, setStore] = useState('');
     // const [storeid, setStoreid] = useState(0);
 
-    // places.map(function(place, i) {
+    // party.map(function(place, i) {
     //   useEffect(() => {
-    //     let newStore: Place[] = [];
-    //     for(let i of places) {
+    //     let newStore: Party[] = [];
+    //     for(let i of party) {
     //       if(i.id == party.userId) {
     //         newStore.push(i);
     //         setStore(i.name);
@@ -39,23 +40,21 @@ const Party = ({ party }: Props) => {
 
     return (
         <div className={styles.container}>
-            <h1>{party.title}</h1>
+          <h1>{party.title}</h1>
 
+          <div className={styles.smallContainer}>
             <div className={styles.image}>
                 <img src={party.image} alt="" />
             </div>
+            <div>
+              <p>{party.text}</p>
+              <p>Local: <small>{party.local}</small></p>
+              <p>Organizado por: {party.responsible}</p>
+              <p>Data: {party.date}</p>
+            </div>
+          </div>
 
-            <h3>Sobre a festa:</h3>
-            <p>{party.text}</p>
-
-            <h3>Data:</h3>
-            <p>{party.date}</p>
-
-            <h3>Local:</h3>
-            <p>{party.local}</p>
-
-            <h3>Responsável:</h3>
-            <p>{party.responsible}</p>
+          <Slide />
 
             <div>
               <BackButton />

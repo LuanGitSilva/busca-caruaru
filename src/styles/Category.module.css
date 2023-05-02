@@ -4,6 +4,7 @@
     border: 1px solid var(--borderColor);
     max-width: 100rem;
     margin: 5rem auto;
+    margin-inline: 3rem;
 }
 
 .container h1,
@@ -41,6 +42,7 @@
     width: fit-content;
     font-size: 2rem;
     cursor: pointer;
+    margin-inline: auto;
 }
 
 .container li:hover {
@@ -72,10 +74,14 @@
     text-decoration: underline;
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 800px) {
     .container ul {
         height: 25rem;
         align-items: center;
+    }
+
+    .container li {
+        margin-left: 0;
     }
 }
 

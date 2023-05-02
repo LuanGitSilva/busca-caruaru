@@ -7,6 +7,7 @@ import KeyboardIcon from '@mui/icons-material/Keyboard';
 import { useSession } from "next-auth/react";
 import api from '../../../libs/api';
 import { Tourism } from '../../../types/Tourism';
+import Link from 'next/link';
 
 
 type Props = {
@@ -83,19 +84,21 @@ const Tourism = ({ tourism }: Props) => {
             <div className={styles.body}>
               <div className={styles.adds}>
                 {filtered.map((item, index)=>(
-                  <div data-aos='fade-up' className={styles.ad} key={index}>
-                    <div className={styles.image}>
-                      <img
-                        src={item.image}
-                        alt={item.text}
-                      />
+                  <Link href={`tourism/${item.id}`}>
+                    <div data-aos='fade-up' className={styles.ad} key={index}>
+                      <div className={styles.image}>
+                        <img
+                          src={item.image}
+                          alt={item.text}
+                        />
+                      </div>
+                      <div className={styles.adText}>
+                        <h3>{item.title}</h3>
+                        <small>Publicado: {item.date}</small>
+                        <p>{item.text}</p>
+                      </div>
                     </div>
-                    <div className={styles.adText}>
-                      <h3>{item.title}</h3>
-                      <small>Publicado: {item.date}</small>
-                      <p>{item.text}</p>
-                    </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -105,20 +108,22 @@ const Tourism = ({ tourism }: Props) => {
             <div className={styles.body}>
               <div className={styles.adds}>
                 {tourism.map((item, index)=>(
-                  <div data-aos='fade-up' className={styles.ad} key={index}>
-                    <div className={styles.image}>
-                      <img
-                        src={item.image}
-                        alt={item.text}
-                      />
+                  <Link href={`tourism/${item.id}`}>
+                    <div data-aos='fade-up' className={styles.ad} key={index}>
+                      <div className={styles.image}>
+                        <img
+                          src={item.image}
+                          alt={item.text}
+                        />
+                      </div>
+                      <div className={styles.adText}>
+                        <h3>{item.title}</h3>
+                        <small>Publicado: {item.date}</small>
+                        <p>{item.text}</p>
+                        <small>Responsável: {item.responsible}</small>
+                      </div>
                     </div>
-                    <div className={styles.adText}>
-                      <h3>{item.title}</h3>
-                      <small>Publicado: {item.date}</small>
-                      <p>{item.text}</p>
-                      <small>Responsável: {item.responsible}</small>
-                    </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>

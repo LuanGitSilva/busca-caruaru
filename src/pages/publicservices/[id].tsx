@@ -8,6 +8,7 @@ import { Place } from "../../../types/Place";
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import { Service } from "../../../types/Service";
+import { Slide } from "../../../components/Slide";
 
 type Props = {
     publicservice: Service,
@@ -43,19 +44,23 @@ const PublicServiceType = ({ publicservice, places }: Props) => {
         <div className={styles.container}>
             <h1>{publicservice.title}</h1>
 
-            <div className={styles.image}>
-                <img src={publicservice.image} alt="" />
+            <div className={styles.smallContainer}>
+              <div className={styles.image}>
+                  <img src={publicservice.image} alt="" />
+              </div>
+              <div>
+                <h3>Sobre nós:</h3>
+                <p>{publicservice.text}</p>
+              </div>
             </div>
 
-            <h3>Sobre o produto:</h3>
-            <p>{publicservice.text}</p>
+            <div className={styles.smallContainer}>
+              <p>Visite o prestador de serviço aqui:
+              <small onClick={go}>{store}</small>
+              </p>
+            </div>
 
-            <h3>Preço:</h3>
-            <p>{publicservice.price}</p>
-
-            <h3>Loja:</h3>
-
-            <p onClick={go}>{store}</p>            
+            <Slide />
 
             <div>
               <BackButton />
@@ -69,7 +74,7 @@ export default PublicServiceType;
 export const getStaticPaths = async () => {
 
     const prisma = new PrismaClient();
-    const services = await prisma.service.findMany();
+    const services = await prisma.publicService.findMany();
     return {
       paths: services.map((service) => ({
         params: {

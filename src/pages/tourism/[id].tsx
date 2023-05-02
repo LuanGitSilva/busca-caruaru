@@ -6,13 +6,14 @@ import { BackButton } from "../../../components/BackButton";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from 'next/router';
-import { Party } from "../../../types/Party";
+import { Tourism } from "../../../types/Tourism";
+import { Slide } from "../../../components/Slide";
 
 type Props = {
-    party: Party
+    tourism: Tourism
 }
 
-const Party = ({ party }: Props) => {
+const Party = ({ tourism }: Props) => {
     const router = useRouter();
 
     // const go = () => {
@@ -39,23 +40,21 @@ const Party = ({ party }: Props) => {
 
     return (
         <div className={styles.container}>
-            <h1>{party.title}</h1>
+            <h1>{tourism.title}</h1>
 
-            <div className={styles.image}>
-                <img src={party.image} alt="" />
+            <div className={styles.smallContainer}>
+              <div className={styles.image}>
+                  <img src={tourism.image} alt="" />
+              </div>
+              <div>
+                <p>{tourism.text}</p>
+                <p>Local: <small>{tourism.local}</small></p>
+                <p>Organizado por: {tourism.responsible}</p>
+                <p>Data: {tourism.date}</p>
+              </div>
             </div>
 
-            <h3>Sobre a festa:</h3>
-            <p>{party.text}</p>
-
-            <h3>Data:</h3>
-            <p>{party.date}</p>
-
-            <h3>Local:</h3>
-            <p>{party.local}</p>
-
-            <h3>Responsável:</h3>
-            <p>{party.responsible}</p>
+            <Slide />
 
             <div>
               <BackButton />
@@ -67,11 +66,11 @@ const Party = ({ party }: Props) => {
 export const getStaticPaths = async () => {
 
     const prisma = new PrismaClient();
-    const parties = await prisma.party.findMany();
+    const tourism = await prisma.tourism.findMany();
     return {
-      paths: parties.map((party) => ({
+      paths: tourism.map((tourism) => ({
         params: {
-          id: party.id.toString()
+          id: tourism.id.toString()
         }
       })),
       fallback: false
@@ -84,10 +83,10 @@ interface IParams extends ParsedUrlQuery {
 export const getStaticProps = async (context: { params: IParams }, params: { id: string }) => {
     const { id } = context.params as IParams;
 
-    const party = await api.getParty(parseInt(id as string));
+    const tourism = await api.getTourism(parseInt(id as string));
     return {
       props: {
-        party
+        tourism
       }
     }
 }
