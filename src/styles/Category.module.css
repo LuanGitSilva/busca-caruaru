@@ -3,8 +3,10 @@
     border-radius: 2rem;
     border: 1px solid var(--borderColor);
     max-width: 100rem;
-    margin: 5rem auto;
+    width: 90%;
+    margin-block: 5rem;
     margin-inline: 3rem;
+
 }
 
 .container h1,

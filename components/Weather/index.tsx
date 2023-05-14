@@ -31,19 +31,19 @@ const Weather = () => {
 
     return (
         <div className={styles.container}>
-            <h2>Previsão do clima hoje</h2>            
+            <h2>Previsão do tempo</h2>            
             <div className={styles.box}>
-                <p>Máxima do dia:</p>
+                <p>Máxima:</p>
                 <small>{maxTemp}&deg;</small>
             </div>
 
             <div className={styles.box}>
-                <p>Temperatura atual:</p>
+                <p>Temperatura:</p>
                 <small>{temp}&deg;</small>
             </div>
 
             <div className={styles.box}>
-                <p>Mínima do dia:</p>
+                <p>Mínima:</p>
                 <small>{minTemp}&deg;</small>
             </div>
 

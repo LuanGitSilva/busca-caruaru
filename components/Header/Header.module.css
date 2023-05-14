@@ -85,6 +85,11 @@
     text-decoration: underline;
 }
 
+.loginDiv {
+    width: 100%;
+    position: absolute;
+}
+
 /* mobile */
 .nav2 {
     display: none;

@@ -1,6 +1,5 @@
 import { Logo } from '../Logo';
 import styles from './Header.module.css';
-
 import { navigationLinks } from '../../utils/menu';
 import { admLinks } from '../../utils/menu';
 import Link from 'next/link';
@@ -8,16 +7,21 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState, useEffect } from 'react';
-
+import Login from './login';
 
 export const Header = () => {
     const [close, setClose] = useState(false);
+    const [showLogin, setShowLogin] = useState(false);
 
     const abrir = () => {
         setClose(true);
     }
     const fechar = () => {
         setClose(false);
+    }
+    
+    const click = () => {
+        setShowLogin(!showLogin)
     }
 
     const { data: session, status: sessionStatus } = useSession();
@@ -41,7 +45,7 @@ export const Header = () => {
                             </li>
                         ))}
                         {sessionStatus === 'unauthenticated' &&
-                            <li className={styles.li} onClick={() => signIn()}>Login</li>
+                            <li className={styles.li} onClick={click}>Login</li>
                         }
                     </ul>
                     {sessionStatus === 'authenticated' &&
@@ -66,7 +70,7 @@ export const Header = () => {
                         </li>
                     ))}
                     {sessionStatus === 'unauthenticated' &&
-                        <li className={styles.li2} onClick={() => signIn()}>Login</li>
+                        <li className={styles.li2} onClick={click}>Login</li>
                     }
                 </ul>
                 {sessionStatus === 'authenticated' &&
@@ -84,6 +88,14 @@ export const Header = () => {
             <div className={styles.logo}>
                 <MenuIcon className={styles.openImg} onClick={abrir} />
                 <Logo />
+            </div>
+            <div 
+                style={{
+                    display: showLogin ? 'block' : 'none'
+                }}
+                className={styles.loginDiv}
+            >
+                <Login event={click} />
             </div>
         </div>
 

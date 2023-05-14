@@ -80,6 +80,10 @@ export default function Home({ news, parties, tourism }: Props) {
     Aos.init({ duration: 500 });
   }, []);
 
+  const login = () => {
+
+  }
+
   return (
     <>
       <Head>
@@ -89,6 +93,7 @@ export default function Home({ news, parties, tourism }: Props) {
         <link rel="icon" href="/favicon.ico" /> */}
       </Head>
       <main className={styles.main}>
+
         <div className={styles.caruaru}>
           <h1>Tudo sobre a Capital do Forró em um só lugar.</h1>
         </div>

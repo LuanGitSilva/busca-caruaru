@@ -19,6 +19,5 @@
 }
 
 .btn button:hover {
-    /* background-color: var(--color1); */
     text-decoration: underline;
 }

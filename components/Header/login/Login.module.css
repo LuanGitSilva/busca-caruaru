@@ -1,0 +1,89 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px);
+}
+
+.painel {
+    background-color: #fff;
+    border-radius: 1rem;
+    max-width: 80vw;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.subtitle {
+    margin-top: 3rem;
+    margin-bottom: .5rem;
+    font-size: 1.8rem;
+}
+
+.search {
+    width: 100%;
+    max-width: 40rem;
+    margin-inline: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid var(--borderColor);
+}
+  
+.search:hover .icon {
+    color: var(--color1);
+}
+
+.search input {
+    height: 4rem;
+    width: 100%;
+    border: none;
+    font-size: 1.6rem;
+    background-color: transparent;
+    margin-inline: auto;
+}
+
+.search input:focus {
+    outline: 0;
+}
+
+.icon {
+    height: 3rem;
+    width: 3rem;
+    color: var(--borderColor);
+}
+
+.btn {
+    width: 100%;  
+    display: flex;
+    justify-content: center;
+    margin-block: 3rem;
+}
+
+.btn button {
+    width: 8rem;
+    height: 3rem;
+    border: none;
+    border-radius: .4rem;
+    background-color: var(--headerBackgroundColor);
+    color: var(--bgAll);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.7rem;
+    transition: .3s;
+}
+
+.btn button:hover {
+    text-decoration: underline;
+}

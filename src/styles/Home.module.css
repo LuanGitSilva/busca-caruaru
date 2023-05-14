@@ -25,7 +25,6 @@
   width: 100%;
   max-width: 50rem;
   margin-inline: auto;
-  /* cursor: pointer; */
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -158,10 +157,9 @@
 .main {
   display: flex;
   flex-direction: column;
-  /* gap: 4rem; */
   align-items: center;
-  /* max-width: 130rem; */
   margin-inline: auto;
+  width: 100%;
 }
 
 .main h1 {

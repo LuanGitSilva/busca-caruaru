@@ -1,28 +1,21 @@
-import { useState } from 'react';
-import styles from '../../styles/Category.module.css';
-import Link from 'next/link';
+import { MouseEventHandler, useEffect, useState } from 'react';
+import styles from './Login.module.css';
 import KeyboardIcon from '@mui/icons-material/Keyboard';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useRouter } from 'next/router';
-import { BackButton } from '../../../components/BackButton';
+import { BackButton } from '../../BackButton';
 import { signIn } from 'next-auth/react';
-import { GetServerSideProps } from 'next';
-import { unstable_getServerSession } from 'next-auth';
-import { authOptions } from '../api/auth/[...nextauth]';
-import { AuthUser } from '../../../types/AuthUser';
 
-type Props = {
-    loggedUser: AuthUser;
-}
-
-const Login = () => {
+const Login = (props: { event: MouseEventHandler<HTMLButtonElement> | undefined; }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [visibility, setVisibility] = useState(false);
     const [loading, setLoading] = useState(false);
 
     const router = useRouter();
+
+    const listener = props.event;
 
     const handleSubmit = async () => {
         setLoading(true);
@@ -31,13 +24,16 @@ const Login = () => {
             email, password
         });
         setLoading(false);
+        
 
         if (request && request.ok) {
             if (router.query.callbackUrl) {
                 router.push(router.query.callbackUrl as string)
             } else {
-                router.push('/select');
+                router.push('/');
             }
+            setEmail('');
+            setPassword('');
         } else {
             alert('Dados incorretos!');
             setEmail('');
@@ -45,10 +41,14 @@ const Login = () => {
         }
     }
 
+    useEffect(() => {
+        
+    }, [])
+
     return (
-        <>
-            <div>
-                <h1 className={styles.title}>Faça o login para ter acesso!</h1>
+        <div className={styles.container}>
+            <div className={styles.painel}>
+                <h3 className={styles.title}>Faça o login para ter acesso!</h3>
                 
                 <h2 className={styles.subtitle}>E-mail:</h2>
                 <div className={styles.search}>
@@ -109,11 +109,12 @@ const Login = () => {
                         display: email && password ? 'flex' : 'none'
                     }}
                     className={styles.btn}
+                    onClick={listener}
                 >
                         <button 
                             onClick={handleSubmit}
                             disabled={loading}
-                        >Enviar</button>
+                        >Entrar</button>
                 </div>
 
                 {loading && "carregando..."}
@@ -124,26 +125,14 @@ const Login = () => {
                     }}
                     className={styles.btn}
                 >
-                        <BackButton/>
+                    <button 
+                        onClick={listener}
+                        disabled={loading}
+                    >Fechar</button>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
-
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//     const session = await unstable_getServerSession(
-//         context.req, context.res, authOptions
-//     );
-//     if (!session) { return { 
-//         redirect: { destination: '/login', permanent: true } 
-//     } }
-
-//     return {
-//         props: {
-//             loggedUser: session.user
-//         }
-//     }
-// }
 
 export default Login;
