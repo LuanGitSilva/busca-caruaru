@@ -3,6 +3,7 @@
     border-radius: 2rem;
     border: 1px solid var(--borderColor);
     max-width: 100rem;
+    width: 100%;
     margin: 5rem auto;
     margin-inline: 3rem;
 }
@@ -15,15 +16,16 @@
 
 .image {
     width: 100%;
-    max-width: 70rem;
+    text-align: center;
     margin-inline: auto;
-    border-radius: 1rem;
     overflow: hidden;
     margin-bottom: 4rem;
+    border-radius: 1rem;
 }
 
 .image img {
-    width: 100%;
+    width: 40rem;
+    border-radius: 1rem;
 }
 
 .container h3 {

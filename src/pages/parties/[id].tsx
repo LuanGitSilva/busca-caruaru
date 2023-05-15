@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useRouter } from 'next/router';
 import { Party } from "../../../types/Party";
 import { Slide } from "../../../components/Slide";
+import Image from "next/image";
 
 type Props = {
     party: Party
@@ -16,35 +17,18 @@ type Props = {
 const Party = ({ party }: Props) => {
     const router = useRouter();
 
-    // const go = () => {
-    //   router.push(`/category/${storeid}`)
-    // }
-
-    // const [store, setStore] = useState('');
-    // const [storeid, setStoreid] = useState(0);
-
-    // party.map(function(place, i) {
-    //   useEffect(() => {
-    //     let newStore: Party[] = [];
-    //     for(let i of party) {
-    //       if(i.id == party.userId) {
-    //         newStore.push(i);
-    //         setStore(i.name);
-    //         setStoreid(i.id);
-    //       }
-    //     }
-    //   })
-    // });
-
-    // console.log(store)
-
     return (
         <div className={styles.container}>
           <h1>{party.title}</h1>
 
           <div className={styles.smallContainer}>
             <div className={styles.image}>
-                <img src={party.image} alt="" />
+              <Image 
+                width={400} 
+                height={300} 
+                src={party.image} 
+                alt="" 
+              />
             </div>
             <div>
               <p>{party.text}</p>

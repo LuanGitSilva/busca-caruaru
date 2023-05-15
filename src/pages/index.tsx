@@ -14,6 +14,7 @@ import { News } from '../../types/News';
 import { Party } from '../../types/Party';
 import { Tourism } from '../../types/Tourism';
 import Weather from '../../components/Weather';
+import Image from 'next/image';
 
 type Props = {
   news: News[];
@@ -51,17 +52,17 @@ export default function Home({ news, parties, tourism }: Props) {
   useEffect(() => {
     let newNews: News[] = news.slice(0, 4);
     setFiltered(newNews);
-  }, []);
+  }, [news]); // adicionei news
 
   useEffect(() => {
     let newParty: Party[] = parties.slice(0, 4);
     setFiltered2(newParty);
-  }, []);
+  }, [parties]); // adicionei parties
 
   useEffect(() => {
     let newTourism: Tourism[] = tourism.slice(0, 4);
     setFiltered3(newTourism);
-  }, []);
+  }, [tourism]); // adicionei tourism
 
   const [w, setW] = useState(false);
   
@@ -114,7 +115,9 @@ export default function Home({ news, parties, tourism }: Props) {
                     <Link href={`news/${item.id}`} key={index}>
                       <div data-aos='fade-up' className={styles.ad}>
                         <div className={styles.image}>
-                          <img
+                          <Image 
+                            width={400} 
+                            height={300}
                             src={item.image}
                             alt={item.text}
                           />
@@ -175,7 +178,9 @@ export default function Home({ news, parties, tourism }: Props) {
                   <Link href={`parties/${item.id}`} key={index}>
                     <div data-aos='fade-up' className={styles.ad}>
                       <div className={styles.image}>
-                        <img
+                        <Image 
+                          width={400} 
+                          height={300}
                           src={item.image}
                           alt={item.text}
                         />
@@ -207,7 +212,9 @@ export default function Home({ news, parties, tourism }: Props) {
                   <Link href={`tourism/${item.id}`} key={index}>
                     <div data-aos='fade-up' className={styles.ad}>
                       <div className={styles.image}>
-                        <img
+                        <Image 
+                          width={400} 
+                          height={300}
                           src={item.image}
                           alt={item.text}
                         />

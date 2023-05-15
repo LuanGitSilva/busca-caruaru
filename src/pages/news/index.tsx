@@ -8,7 +8,7 @@ import KeyboardIcon from '@mui/icons-material/Keyboard';
 import { useSession } from "next-auth/react";
 import api from '../../../libs/api';
 import Link from 'next/link';
-
+import Image from 'next/image';
 
 type Props = {
   news: News[];
@@ -35,7 +35,7 @@ export default function Home({ news }: Props) {
       } else {
           setShow(false);
       }
-  }, [busca]);
+  }, [news]); // adicionei news no lugar de busca
 
   const [w, setW] = useState(false);
   
@@ -85,7 +85,9 @@ export default function Home({ news }: Props) {
                   <Link href={`news/${item.id}`} key={index}>
                     <div data-aos='fade-up' className={styles.ad}>
                       <div className={styles.image}>
-                        <img
+                        <Image 
+                          width={400} 
+                          height={300}
                           src={item.image}
                           alt={item.text}
                         />
@@ -109,7 +111,9 @@ export default function Home({ news }: Props) {
                   <Link href={`news/${item.id}`} key={index}>
                     <div data-aos='fade-up' className={styles.ad}>
                       <div className={styles.image}>
-                        <img
+                        <Image 
+                          width={400} 
+                          height={300}
                           src={item.image}
                           alt={item.text}
                         />

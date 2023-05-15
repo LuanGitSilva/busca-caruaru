@@ -29,7 +29,8 @@ const Category = ({ places }: Props) => {
         } else {
             setShow(false);
         }
-    }, [busca]);''
+    }, []);''
+    // tirei 'busca'
 
     return (
         <>

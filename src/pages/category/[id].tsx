@@ -4,7 +4,7 @@ import styles from "../../styles/CategoryId.module.css";
 import { PrismaClient } from "@prisma/client";
 import api from "../../../libs/api";
 import { BackButton } from "../../../components/BackButton";
-import { useEffect } from "react";
+import Image from "next/image";
 import { Slide } from "../../../components/Slide";
 
 type Props = {
@@ -18,7 +18,7 @@ const CategoryType = ({ place }: Props) => {
 
             <div className={styles.smallContainer}>
               <div className={styles.image}>
-                  <img src={place.image1} alt="" />
+                  <Image width={400} height={300} src={place.image1} alt="" />
               </div>
               <div>
                 <h3>Sobre nós:</h3>
@@ -32,10 +32,10 @@ const CategoryType = ({ place }: Props) => {
 
             <div className={styles.smallContainer}>
               <div className={styles.image}>
-                  <img src={place.image2} alt="" />
+                  <Image width={400} height={300} src={place.image2} alt="" />
               </div>
               <div className={styles.image}>
-                  <img src={place.image3} alt="" />
+                  <Image width={400} height={300} src={place.image3} alt="" />
               </div>
             </div>
 

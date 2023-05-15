@@ -8,7 +8,7 @@ import { useSession } from "next-auth/react";
 import api from '../../../libs/api';
 import { Party } from '../../../types/Party';
 import Link from 'next/link';
-
+import Image from 'next/image';
 
 type Props = {
   parties: Party[];
@@ -35,7 +35,7 @@ const Party = ({ parties }: Props) => {
       } else {
           setShow(false);
       }
-  }, [busca]);
+  }, [parties]);
 
   const [w, setW] = useState(false);
   
@@ -85,7 +85,9 @@ const Party = ({ parties }: Props) => {
                   <Link href={`parties/${item.id}`} key={index}>
                     <div data-aos='fade-up' className={styles.ad}>
                       <div className={styles.image}>
-                        <img
+                        <Image 
+                          width={400} 
+                          height={300} 
                           src={item.image}
                           alt={item.text}
                         />
@@ -109,7 +111,9 @@ const Party = ({ parties }: Props) => {
                   <Link href={`parties/${item.id}`} key={index}>
                     <div data-aos='fade-up' className={styles.ad}>
                       <div className={styles.image}>
-                        <img
+                        <Image 
+                          width={400} 
+                          height={300} 
                           src={item.image}
                           alt={item.text}
                         />

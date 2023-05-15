@@ -3,7 +3,7 @@ import styles from "../../styles/CategoryId.module.css";
 import { PrismaClient } from "@prisma/client";
 import api from "../../../libs/api";
 import { BackButton } from "../../../components/BackButton";
-import { useEffect } from "react";
+import Image from "next/image";
 import { Slide } from "../../../components/Slide";
 import { News } from "../../../types/News";
 
@@ -18,7 +18,11 @@ const PageNews = ({ news }: Props) => {
 
             <div className={styles.smallContainer}>
               <div className={styles.image}>
-                  <img src={news.image} alt="" />
+                <Image 
+                  width={400} 
+                  height={300} 
+                  src={news.image} alt="" 
+                />
               </div>
               <div>
                 <p>{news.text}</p>
