@@ -89,14 +89,16 @@ export const Header = () => {
                 <MenuIcon className={styles.openImg} onClick={abrir} />
                 <Logo />
             </div>
-            <div 
-                style={{
-                    display: showLogin ? 'block' : 'none'
-                }}
-                className={styles.loginDiv}
-            >
-                <Login event={click} />
-            </div>
+            {sessionStatus === 'unauthenticated' &&
+                <div 
+                    style={{
+                        display: showLogin ? 'block' : 'none'
+                    }}
+                    className={styles.loginDiv}
+                >
+                    <Login event={click} />
+                </div>
+            }
         </div>
 
     );
