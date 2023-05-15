@@ -16,22 +16,20 @@ const Category = ({ places }: Props) => {
     const [filtered, setFiltered] = useState<Place[]>([]);
     const [show, setShow] = useState(false);
       
-    places.map(function(place, i) {
-        useEffect(() => {
-            let newFiltered: Place[] = [];
-            for(let i of places) {
-                if(i.name.toLowerCase().indexOf(busca.toLowerCase()) > -1) {
-                    newFiltered.push(i);
-                }
+    useEffect(() => {''
+        let newFiltered: Place[] = [];
+        for(let i of places) {
+            if(i.name.toLowerCase().indexOf(busca.toLowerCase()) > -1) {
+                newFiltered.push(i);
             }
-            setFiltered(newFiltered);
-            if(busca) {
-                setShow(true);
-            } else {
-                setShow(false);
-            }
-        }, [busca]);
-    });
+        }
+        setFiltered(newFiltered);
+        if(busca) {
+            setShow(true);
+        } else {
+            setShow(false);
+        }
+    }, [busca]);''
 
     return (
         <>

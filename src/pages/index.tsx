@@ -111,8 +111,8 @@ export default function Home({ news, parties, tourism }: Props) {
                 <div className={styles.adds}>
                 <h2>Últimas notícias</h2>
                   {filtered.map((item, index)=>(
-                    <Link href={`news/${item.id}`}>
-                      <div data-aos='fade-up' className={styles.ad} key={index}>
+                    <Link href={`news/${item.id}`} key={index}>
+                      <div data-aos='fade-up' className={styles.ad}>
                         <div className={styles.image}>
                           <img
                             src={item.image}
@@ -172,8 +172,8 @@ export default function Home({ news, parties, tourism }: Props) {
               <div className={styles.adds}>
               <h2>Últimas festas</h2>
                 {filtered2.map((item, index)=>(
-                  <Link href={`parties/${item.id}`}>
-                    <div data-aos='fade-up' className={styles.ad} key={index}>
+                  <Link href={`parties/${item.id}`} key={index}>
+                    <div data-aos='fade-up' className={styles.ad}>
                       <div className={styles.image}>
                         <img
                           src={item.image}
@@ -204,8 +204,8 @@ export default function Home({ news, parties, tourism }: Props) {
               <div className={styles.adds}>
               <h2>Últimos turismos</h2>
                 {filtered3.map((item, index)=>(
-                  <Link href={`tourism/${item.id}`}>
-                    <div data-aos='fade-up' className={styles.ad} key={index}>
+                  <Link href={`tourism/${item.id}`} key={index}>
+                    <div data-aos='fade-up' className={styles.ad}>
                       <div className={styles.image}>
                         <img
                           src={item.image}

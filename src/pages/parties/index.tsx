@@ -82,8 +82,8 @@ const Party = ({ parties }: Props) => {
             <div className={styles.body}>
               <div className={styles.adds}>
                 {filtered.map((item, index)=>(
-                  <Link href={`parties/${item.id}`}>
-                    <div data-aos='fade-up' className={styles.ad} key={index}>
+                  <Link href={`parties/${item.id}`} key={index}>
+                    <div data-aos='fade-up' className={styles.ad}>
                       <div className={styles.image}>
                         <img
                           src={item.image}
@@ -106,8 +106,8 @@ const Party = ({ parties }: Props) => {
             <div className={styles.body}>
               <div className={styles.adds}>
                 {parties.map((item, index)=>(
-                  <Link href={`parties/${item.id}`}>
-                    <div data-aos='fade-up' className={styles.ad} key={index}>
+                  <Link href={`parties/${item.id}`} key={index}>
+                    <div data-aos='fade-up' className={styles.ad}>
                       <div className={styles.image}>
                         <img
                           src={item.image}

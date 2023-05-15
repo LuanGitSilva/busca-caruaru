@@ -45,8 +45,8 @@ const Introduction = () => {
                         
 
                         {navigationLinks.map((link, index)=>(
-                            <Link className={styles.box} href={link.path}>
-                                <li key={index}>
+                            <Link className={styles.box} href={link.path} key={index}>
+                                <li>
                                     {link.label}
                                 </li>
                             </Link>
