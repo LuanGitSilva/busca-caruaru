@@ -25,17 +25,15 @@ const PublicServiceType = ({ publicservice, places }: Props) => {
     const [store, setStore] = useState('');
     const [storeid, setStoreid] = useState(0);
 
-    places.map(function(place, i) {
-      useEffect(() => {
-        let newStore: Place[] = [];
-        for(let i of places) {
-          if(i.id == publicservice.userId) {
-            newStore.push(i);
-            setStore(i.name);
-            setStoreid(i.id);
-          }
+    useEffect(() => {
+      let newStore: Place[] = [];
+      for(let i of places) {
+        if(i.id == publicservice.userId) {
+          newStore.push(i);
+          setStore(i.name);
+          setStoreid(i.id);
         }
-      })
+      }
     });
 
     console.log(store)

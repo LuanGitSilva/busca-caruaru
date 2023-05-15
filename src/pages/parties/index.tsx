@@ -22,22 +22,20 @@ const Party = ({ parties }: Props) => {
 
   const [show, setShow] = useState(false);
       
-  parties.map(function(place, i) {
-      useEffect(() => {
-          let newFiltered: Party[] = [];
-          for(let i of parties) {
-              if(i.title.toLowerCase().indexOf(busca.toLowerCase()) > -1) {
-                  newFiltered.push(i);
-              }
+  useEffect(() => {
+      let newFiltered: Party[] = [];
+      for(let i of parties) {
+          if(i.title.toLowerCase().indexOf(busca.toLowerCase()) > -1) {
+              newFiltered.push(i);
           }
-          setFiltered(newFiltered);
-          if(busca) {
-              setShow(true);
-          } else {
-              setShow(false);
-          }
-      }, [busca]);
-  });
+      }
+      setFiltered(newFiltered);
+      if(busca) {
+          setShow(true);
+      } else {
+          setShow(false);
+      }
+  }, [busca]);
 
   const [w, setW] = useState(false);
   

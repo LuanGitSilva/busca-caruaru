@@ -17,22 +17,20 @@ const PublicServices = ({ publicservices }: Props) => {
     const [filtered, setFiltered] = useState<Service[]>([]);
     const [show, setShow] = useState(false);
       
-    publicservices.map(function(publicservice, i) {
-        useEffect(() => {
-            let newFiltered: Service[] = [];
-            for(let i of publicservices) {
-                if(i.title.toLowerCase().indexOf(busca.toLowerCase()) > -1) {
-                    newFiltered.push(i);
-                }
+    useEffect(() => {
+        let newFiltered: Service[] = [];
+        for(let i of publicservices) {
+            if(i.title.toLowerCase().indexOf(busca.toLowerCase()) > -1) {
+                newFiltered.push(i);
             }
-            setFiltered(newFiltered);
-            if(busca) {
-                setShow(true);
-            } else {
-                setShow(false);
-            }
-        }, [busca]);
-    });
+        }
+        setFiltered(newFiltered);
+        if(busca) {
+            setShow(true);
+        } else {
+            setShow(false);
+        }
+    }, [busca]);
 
     return (
         <>

@@ -16,22 +16,20 @@ const Services = ({ services }: Props) => {
     const [filtered, setFiltered] = useState<Service[]>([]);
     const [show, setShow] = useState(false);
       
-    services.map(function(service, i) {
-        useEffect(() => {
-            let newFiltered: Service[] = [];
-            for(let i of services) {
-                if(i.title.toLowerCase().indexOf(busca.toLowerCase()) > -1) {
-                    newFiltered.push(i);
-                }
+    useEffect(() => {
+        let newFiltered: Service[] = [];
+        for(let i of services) {
+            if(i.title.toLowerCase().indexOf(busca.toLowerCase()) > -1) {
+                newFiltered.push(i);
             }
-            setFiltered(newFiltered);
-            if(busca) {
-                setShow(true);
-            } else {
-                setShow(false);
-            }
-        }, [busca]);
-    });
+        }
+        setFiltered(newFiltered);
+        if(busca) {
+            setShow(true);
+        } else {
+            setShow(false);
+        }
+    }, [busca]);
 
     return (
         <>

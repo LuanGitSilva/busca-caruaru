@@ -22,22 +22,20 @@ export default function Home({ news }: Props) {
 
   const [show, setShow] = useState(false);
       
-  news.map(function(place, i) {
-      useEffect(() => {
-          let newFiltered: News[] = [];
-          for(let i of news) {
-              if(i.title.toLowerCase().indexOf(busca.toLowerCase()) > -1) {
-                  newFiltered.push(i);
-              }
+  useEffect(() => {
+      let newFiltered: News[] = [];
+      for(let i of news) {
+          if(i.title.toLowerCase().indexOf(busca.toLowerCase()) > -1) {
+              newFiltered.push(i);
           }
-          setFiltered(newFiltered);
-          if(busca) {
-              setShow(true);
-          } else {
-              setShow(false);
-          }
-      }, [busca]);
-  });
+      }
+      setFiltered(newFiltered);
+      if(busca) {
+          setShow(true);
+      } else {
+          setShow(false);
+      }
+  }, [busca]);
 
   const [w, setW] = useState(false);
   

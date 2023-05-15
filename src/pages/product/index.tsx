@@ -17,22 +17,20 @@ const Product = ({ products }: Props) => {
     const [filtered, setFiltered] = useState<Product[]>([]);
     const [show, setShow] = useState(false);
       
-    products.map(function(product, i) {
-        useEffect(() => {
-            let newFiltered: Product[] = [];
-            for(let i of products) {
-                if(i.title.toLowerCase().indexOf(busca.toLowerCase()) > -1) {
-                    newFiltered.push(i);
-                }
+    useEffect(() => {
+        let newFiltered: Product[] = [];
+        for(let i of products) {
+            if(i.title.toLowerCase().indexOf(busca.toLowerCase()) > -1) {
+                newFiltered.push(i);
             }
-            setFiltered(newFiltered);
-            if(busca) {
-                setShow(true);
-            } else {
-                setShow(false);
-            }
-        }, [busca]);
-    });
+        }
+        setFiltered(newFiltered);
+        if(busca) {
+            setShow(true);
+        } else {
+            setShow(false);
+        }
+    }, [busca]);
 
     return (
         <>

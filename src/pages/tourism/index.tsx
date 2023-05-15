@@ -22,22 +22,20 @@ const Tourism = ({ tourism }: Props) => {
 
   const [show, setShow] = useState(false);
       
-  tourism.map(function(place, i) {
-      useEffect(() => {
-          let newFiltered: Tourism[] = [];
-          for(let i of tourism) {
-              if(i.title.toLowerCase().indexOf(busca.toLowerCase()) > -1) {
-                  newFiltered.push(i);
-              }
+  useEffect(() => {
+      let newFiltered: Tourism[] = [];
+      for(let i of tourism) {
+          if(i.title.toLowerCase().indexOf(busca.toLowerCase()) > -1) {
+              newFiltered.push(i);
           }
-          setFiltered(newFiltered);
-          if(busca) {
-              setShow(true);
-          } else {
-              setShow(false);
-          }
-      }, [busca]);
-  });
+      }
+      setFiltered(newFiltered);
+      if(busca) {
+          setShow(true);
+      } else {
+          setShow(false);
+      }
+  }, [busca]);
 
   const [w, setW] = useState(false);
   
