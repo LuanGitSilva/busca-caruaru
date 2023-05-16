@@ -27,7 +27,7 @@ const Weather = () => {
 
     useEffect(() => {
         getData()
-    }, [])
+    }, [getData])
 
     return (
         <div className={styles.container}>
