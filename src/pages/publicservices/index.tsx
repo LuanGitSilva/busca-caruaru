@@ -30,7 +30,7 @@ const PublicServices = ({ publicservices }: Props) => {
         } else {
             setShow(false);
         }
-    }, [busca]);
+    }, [services]);
 
     return (
         <>

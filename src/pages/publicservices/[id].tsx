@@ -5,7 +5,7 @@ import api from "../../../libs/api";
 import { BackButton } from "../../../components/BackButton";
 import { useEffect, useState } from "react";
 import { Place } from "../../../types/Place";
-import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from 'next/router';
 import { Service } from "../../../types/Service";
 import { Slide } from "../../../components/Slide";
@@ -34,7 +34,7 @@ const PublicServiceType = ({ publicservice, places }: Props) => {
           setStoreid(i.id);
         }
       }
-    });
+    }, [places, publicservice.userId]);
 
     console.log(store)
 
@@ -44,7 +44,7 @@ const PublicServiceType = ({ publicservice, places }: Props) => {
 
             <div className={styles.smallContainer}>
               <div className={styles.image}>
-                  <img src={publicservice.image} alt="" />
+                  <Image width={400} height={300} src={publicservice.image} alt="" />
               </div>
               <div>
                 <h3>Sobre nós:</h3>

@@ -30,7 +30,7 @@ const Product = ({ products }: Props) => {
         } else {
             setShow(false);
         }
-    }, [busca]);
+    }, [products]);
 
     return (
         <>

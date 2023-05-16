@@ -29,7 +29,7 @@ const Category = ({ places }: Props) => {
         } else {
             setShow(false);
         }
-    }, []);''
+    }, [places]);''
     // tirei 'busca'
 
     return (

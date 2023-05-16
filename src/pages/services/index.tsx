@@ -29,7 +29,7 @@ const Services = ({ services }: Props) => {
         } else {
             setShow(false);
         }
-    }, [busca]);
+    }, [services]);
 
     return (
         <>

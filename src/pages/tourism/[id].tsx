@@ -3,8 +3,7 @@ import styles from "../../styles/CategoryId.module.css";
 import { PrismaClient } from "@prisma/client";
 import api from "../../../libs/api";
 import { BackButton } from "../../../components/BackButton";
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from 'next/router';
 import { Tourism } from "../../../types/Tourism";
 import { Slide } from "../../../components/Slide";
@@ -44,7 +43,7 @@ const Party = ({ tourism }: Props) => {
 
             <div className={styles.smallContainer}>
               <div className={styles.image}>
-                  <img src={tourism.image} alt="" />
+                  <Image width={400} height={300} src={tourism.image} alt="" />
               </div>
               <div>
                 <p>{tourism.text}</p>

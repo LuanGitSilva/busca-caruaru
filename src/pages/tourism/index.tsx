@@ -4,7 +4,7 @@ import Aos from 'aos';
 import 'aos/dist/aos.css';
 import SearchIcon from '@mui/icons-material/Search';
 import KeyboardIcon from '@mui/icons-material/Keyboard';
-import { useSession } from "next-auth/react";
+import Image from 'next/image';
 import api from '../../../libs/api';
 import { Tourism } from '../../../types/Tourism';
 import Link from 'next/link';
@@ -35,7 +35,7 @@ const Tourism = ({ tourism }: Props) => {
       } else {
           setShow(false);
       }
-  }, [busca]);
+  }, [tourism]);
 
   const [w, setW] = useState(false);
   
@@ -85,7 +85,9 @@ const Tourism = ({ tourism }: Props) => {
                   <Link href={`tourism/${item.id}`} key={index}>
                     <div data-aos='fade-up' className={styles.ad}>
                       <div className={styles.image}>
-                        <img
+                        <Image 
+                          width={400} 
+                          height={300}
                           src={item.image}
                           alt={item.text}
                         />
