@@ -11,6 +11,10 @@ const nextConfig = {
         hostname: 'raw.githubusercontent.com',
         // port: '',
         // pathname: '/account123/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com',
       }
     ],
     minimumCacheTTL: 15000000,
